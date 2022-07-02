@@ -2,6 +2,7 @@ on:
   schedule:
     # once a week to check with latest version of plugins
     - cron:  '0 19 * * 1'
+  workflow_dispatch:
 
 jobs:
   jenkins-lts:
