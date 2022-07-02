@@ -31,6 +31,7 @@ def dumpVersion() {
     print fullVersionStr
 
     def target = System.getenv('ACTION_JENKINS_VERSION')
+
     if (target != null) {
         new File(target).mkdirs()
         new File("${target}/version").write(instanceVersion)
