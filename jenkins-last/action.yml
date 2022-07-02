@@ -1,0 +1,17 @@
+name: "Jenkins"
+description: "Start a jenkins instance"
+inputs:
+  version:
+    description: "The jekins version to use (default: lts)"
+    required: false
+    default: "lts"
+runs:
+  using: "composite"
+  steps:
+    - name: "Prepare files for build"
+      shell: "bash"
+      run: |
+        chmod +x ./prepare_build.sh
+        ./prepare_build.sh ${{inputs.version}} ./.jenkins-build
+
+    - uses: ./.jenkins-build
