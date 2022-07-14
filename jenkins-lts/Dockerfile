@@ -1,6 +1,5 @@
 FROM jenkins/jenkins:lts
 
-# switch to root, let the entrypoint drop back to jenkins
 USER root
 
 # install prerequisite debian packages
@@ -15,15 +14,9 @@ RUN apt-get update \
      wget \
      procps \
      psmisc \
+     libxml-xpath-perl \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
-
-# install gosu for a better su+exec command
-ARG GOSU_VERSION=1.12
-RUN dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
- && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
- && chmod +x /usr/local/bin/gosu \
- && gosu nobody true
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli --verbose --plugin-file /usr/share/jenkins/ref/plugins.txt

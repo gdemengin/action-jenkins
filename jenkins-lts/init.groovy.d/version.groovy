@@ -14,19 +14,21 @@ List<java.util.LinkedHashMap> plugins() {
 
 def dumpVersion() {
     def instanceVersion = "${Jenkins.instance.getVersion()}"
-    def versionStr = "Jenkins Instance Version : ${instanceVersion}"
+    def versionStr = "Jenkins Instance Version : ${instanceVersion}\n"
 
     def plugins = plugins()
     plugins.sort{ it['shortName'] }
 
-    def pluginsVersionStr = "Plugins : \n"
-    pluginsVersionStr += plugins.collect{
+    def pluginsVersionsStr = "Plugins : \n"
+    pluginsVersionsStr += plugins.collect{
         "\t${it.displayName} (${it.shortName}) v${it.version}"
-    }.join('\n')
+    }.join('\n') + '\n'
 
-    def pluginsShortVersion = plugins.collect{ "${it.shortName}:${it.version}" }.join('\n') + '\n'
+    def pluginsShortVersionsStr = plugins.collect{
+         "${it.shortName}:${it.version}"
+    }.join('\n') + '\n'
 
-    def fullVersionStr = "${versionStr}\n${pluginsVersionStr}\n"
+    def fullVersionStr = "${versionStr}${pluginsVersionsStr}"
 
     print fullVersionStr
 
@@ -35,7 +37,7 @@ def dumpVersion() {
     if (target != null) {
         new File(target).mkdirs()
         new File("${target}/version").write(instanceVersion)
-        new File("${target}/plugins.txt").write(pluginsShortVersion)
+        new File("${target}/plugins.txt").write(pluginsShortVersionsStr)
         // human readable
         new File("${target}/versions.txt").write(fullVersionStr)
     }

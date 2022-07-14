@@ -2,6 +2,11 @@
 
 set -e
 
+function interruptible_sleep() {
+    sleep $1 &
+    wait $!
+}
+
 function start_jenkins() {
     echo "$(date) starting jenkins instance"
     export JAVA_OPTS=${ACTION_JENKINS_JAVA_OPTS:-"-Djenkins.install.runSetupWizard=false"}
@@ -14,13 +19,20 @@ function start_jenkins() {
     else
         /usr/local/bin/jenkins.sh >> /jenkins.log 2>&1 &
 
-        while [ $(cat /jenkins.log | grep "Completed initialization" | wc -l) = 0 ]; do
-            if [ $(cat /jenkins.log | grep "Jenkins stopped" | wc -l) != 0 ]; then
+        local elapsed=0
+        local start=
+        local stop=
+        local timeout=${ACTION_JENKINS_STARTUP_TIMEOUT:-300}
+        while [ ${elapsed} -lt ${timeout} ] && [ "${start}" == "0" -o "${start}" == "" ]; do
+            start=$(cat /jenkins.log | grep 'Completed initialization' | wc -l)
+            stop=$(cat /jenkins.log | grep 'Jenkins stopped' | wc -l)
+            if [ "${stop}" != "0" ] && [ "${stop}" != "" ]; then
                 echo "jenkins has stopped instead of starting"
                 return 1
             fi
             echo "$(date) waiting for jenkins to complete startup"
-            sleep 10
+            interruptible_sleep 10
+            elapsed=$(( ${elapsed} + 10 ))
         done
         echo ""
         echo "$(date) jenkins instance started"
@@ -32,43 +44,67 @@ function stop_jenkins() {
     sleep 1
 
     # wait for shutdown
-    while [ $(ps -efla | grep java | grep -v grep | wc -l) != 0 ]; do
+    local elapsed=0
+    local stop=$(ps -efla | grep java | grep -v grep | wc -l)
+    local timeout=${ACTION_JENKINS_SHUTDOWN_TIMEOUT:-60}
+    while [ ${elapsed} -lt ${timeout} ] && [ "${stop}" != "0" ] && [ "${stop}" != "" ]; do
+        stop=$(ps -efla | grep java | grep -v grep | wc -l)
         echo "$(date) waiting for jenkins to stop"
         ps -efla | grep java | grep -v grep
         killall java
-        sleep 10
+        interruptible_sleep 10
+        elapsed=$(( ${elapsed} + 10 ))
     done
     echo ""
     echo "$(date) jenkins instance stopped"
 }
 
 function exit_failure() {
-    return_code=$?
+    return_code=$1
+    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
+        echo "$2 FAILED with code ${return_code}: stop jenkins and exit"
+        stop_jenkins
+    fi
+
     # sleep to make sure logs are flushed
     sleep 10
-    echo "$1 failed with code ${return_code}"
-    exit ${return_code}
+    echo "$2 FAILED with code ${return_code}"
+
+    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
+        exit ${return_code}
+    fi
+}
+
+function interrupt() {
+    echo "SIGNAL CAUGHT: stop jenkins and exit"
+    trap - INT
+    trap - TERM
+    stop_jenkins
+    # sleep to make sure logs are flushed
+    sleep 10
+    exit 1
 }
 
 if [ "${ACTION_JENKINS_STANDALONE}" == "true" ]; then
-    start_jenkins standalone
+    start_jenkins
 else
     > /jenkins.log
-    > stdout
-    tail -F /jenkins.log stdout &
-    tm_start=${ACTION_JENKINS_STARTUP_TIMEOUT:-300}
-    tm_stop=${ACTION_JENKINS_SHUTDOWN_TIMEOUT:-60}
+    > /stdout
+    tail -F /jenkins.log /stdout &
+    trap 'interrupt >> /stdout 2>&1;' TERM INT
 
-    export -f start_jenkins
-    export -f stop_jenkins
-
-    timeout ${tm_start} bash -ec "start_jenkins" >> stdout 2>&1 || exit_failure start_jenkins
+    start_jenkins >> /stdout 2>&1 || exit_failure start_jenkins
 
     # TODO : do the work
-    sleep 10
-    # work || exit_failure work
+    interruptible_sleep 10
+    # work || exit_failure $? work
 
-    timeout ${tm_stop} bash -ec stop_jenkins >> stdout 2>&1 || exit_failure stop_jenkins
+    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
+        stop_jenkins >> /stdout 2>&1 || exit_failure stop_jenkins
+    else
+        echo "ACTION_JENKINS_KEEPALIVE=true : keep instance running"
+        interruptible_sleep infinity
+    fi
 fi
 
 # sleep to make sure logs are flushed
