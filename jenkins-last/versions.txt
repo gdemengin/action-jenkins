@@ -1,4 +1,4 @@
-Jenkins Instance Version : 2.346.1
+Jenkins Instance Version : 2.346.2
 Plugins : 
 	JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor) v1.1
 	Ant Plugin (ant) v475.vf34069fef73c
@@ -24,7 +24,7 @@ Plugins :
 	GitHub plugin (github) v1.34.4
 	GitHub API Plugin (github-api) v1.303-400.v35c2d8258028
 	GitHub Branch Source Plugin (github-branch-source) v1656.v77eddb_b_e95df
-	Gradle Plugin (gradle) v1.39.2
+	Gradle Plugin (gradle) v1.39.4
 	JavaScript GUI Lib: Handlebars bundle plugin (handlebars) v3.0.8
 	Jackson 2 API Plugin (jackson2-api) v2.13.3-285.vc03c0256d517
 	JavaBeans Activation Framework (JAF) API (javax-activation-api) v1.2.0-3
@@ -37,7 +37,7 @@ Plugins :
 	JUnit Plugin (junit) v1119.1121.vc43d0fc45561
 	LDAP Plugin (ldap) v2.10
 	Mailer Plugin (mailer) v414.vcc4c33714601
-	Matrix Authorization Strategy Plugin (matrix-auth) v3.1.4
+	Matrix Authorization Strategy Plugin (matrix-auth) v3.1.5
 	Matrix Project Plugin (matrix-project) v772.v494f19991984
 	JavaScript GUI Lib: Moment.js bundle plugin (momentjs) v1.1.1
 	OkHttp Plugin (okhttp-api) v4.9.3-105.vb96869f8ac3a
@@ -68,16 +68,16 @@ Plugins :
 	Structs Plugin (structs) v318.va_f3ccb_729b_71
 	Timestamper (timestamper) v1.18
 	Token Macro Plugin (token-macro) v293.v283932a_0a_b_49
-	Trilead API Plugin (trilead-api) v1.57.v6e90e07157e1
+	Trilead API Plugin (trilead-api) v1.66.v49c6758b_b_360
 	Variant Plugin (variant) v1.4
 	Pipeline (workflow-aggregator) v590.v6a_d052e5a_a_b_5
-	Pipeline: API (workflow-api) v1165.v02c3db_a_6b_e36
-	Pipeline: Basic Steps (workflow-basic-steps) v948.v2c72a_091b_b_68
-	Pipeline: Groovy (workflow-cps) v2725.v7b_c717eb_12ce
-	Pipeline: Nodes and Processes (workflow-durable-task-step) v1155.v79567b_e0a_2de
-	Pipeline: Job (workflow-job) v1189.va_d37a_e9e4eda_
+	Pipeline: API (workflow-api) v1188.v0016b_4f29881
+	Pipeline: Basic Steps (workflow-basic-steps) v969.vc4ec3e4854b_f
+	Pipeline: Groovy (workflow-cps) v2746.v0da_83a_332669
+	Pipeline: Nodes and Processes (workflow-durable-task-step) v1174.v73a_9a_17edce0
+	Pipeline: Job (workflow-job) v1207.ve6191ff089f8
 	Pipeline: Multibranch (workflow-multibranch) v716.vc692a_e52371b_
 	Pipeline: SCM Step (workflow-scm-step) v400.v6b_89a_1317c9a_
 	Pipeline: Step API (workflow-step-api) v625.vd896b_f445a_f8
-	Pipeline: Supporting APIs (workflow-support) v820.vd1a_6cc65ef33
+	Pipeline: Supporting APIs (workflow-support) v833.va_1c71061486b_
 	Workspace Cleanup Plugin (ws-cleanup) v0.42
