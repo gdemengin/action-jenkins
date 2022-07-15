@@ -20,8 +20,8 @@ jobs:
 
       - name: double check jenkins last good version
         uses: ./
-        with
-          - version: last-good-version
+        with:
+          version: last-good-version
 
       - name: update README.md
         run: |

@@ -18,7 +18,7 @@ rm -f ./${TARGET}/action.yml
 
 if [ ${VERSION} == "last-good-version" ]; then
     VERSION=$(cat last-good-version/version)
-    mv last-good-version/plugin.txt ${TARGET}/
+    cp last-good-version/plugins.txt ${TARGET}/
 fi
 
 sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ./${TARGET}/Dockerfile > ./${TARGET}/Dockerfile.tmp
