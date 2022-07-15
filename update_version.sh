@@ -17,7 +17,7 @@ if [ ! -e ./${source}/version ]; then
     exit 1
 fi
 
-NEW_BADGE="[![${source}/versions.txt](https://img.shields.io/badge/jenkins-$(cat .version/version)-blue.svg)](${source}/versions.txt)"
+NEW_BADGE="[![${source}/versions.txt](https://img.shields.io/badge/jenkins-$(cat ${source}/version)-blue.svg)](${source}/versions.txt)"
 sed "s|\[\!\[${source}/versions.txt\].*$|${NEW_BADGE}|" README.md > README.md.tmp
 mv README.md.tmp README.md
 
