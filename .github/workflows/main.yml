@@ -1,3 +1,5 @@
+name: tests
+
 on:
   push:
   pull_request:
@@ -9,21 +11,12 @@ jobs:
   jenkins-versions:
     strategy:
       matrix:
-        version: [lts, 2.346.1, 2.332.4]
+        version: [lts, last-good-version, 2.346.1, 2.332.4]
     runs-on: ubuntu-latest
     name: test on jenkins-${{ matrix.version }}
     steps:
       - uses: actions/checkout@v3
       - name: test jenkins-${{ matrix.version }}
-        uses: ./jenkins-lts/
+        uses: ./
         with:
           version: ${{ matrix.version }}
-
-
-  jenkins-last:
-    runs-on: ubuntu-latest
-    name: test on jenkins last good version
-    steps:
-      - uses: actions/checkout@v3
-      - name: test jenkins-last
-        uses: ./jenkins-last/

@@ -2,7 +2,7 @@ name: "Jenkins"
 description: "Start a jenkins instance"
 inputs:
   version:
-    description: "The jekins version to use (default: lts)"
+    description: "The jenkins version to use (default: lts)"
     required: false
     default: "lts"
 runs:
@@ -14,7 +14,13 @@ runs:
         chmod +x ./prepare_build.sh
         ./prepare_build.sh ${{inputs.version}} ./.jenkins-build
 
-    - uses: ./.jenkins-build
+    - name: "run jenkins-${{inputs.version}}"
+      uses: ./.jenkins-build
+
+    - name: "cleanup"
+      shell: "bash"
+      run: |
+        rm -rf ./.jenkins-build
 
 branding:
   icon: 'server'

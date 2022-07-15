@@ -3,17 +3,19 @@
 set -e
 
 function usage() {
-    echo "usage: $0 [--keepalive] [--standalone] [--no-cache] [--docker-run-arg <arg>] [--] <entrypoint parameters>"
+    echo "usage: $0 [--version <version>] [--keepalive] [--standalone] [--no-cache] [--docker-run-arg <arg>] [--] <entrypoint parameters>"
 }
 
 KEEPALIVE=false
 STANDALONE=false
 DOCKER_RUN_ARG=
 DOCKER_BUILD_ARG=
+VERSION=lts
 
 while [ $# -gt 0 ]; do
     case "$1" in
         -h|--help) usage; exit 0;;
+        --version) VERSION=$2; shift 2;;
         --keepalive) KEEPALIVE=true; shift;;
         --standalone) STANDALONE=true; shift;;
         --no-cache) DOCKER_BUILD_ARG="--pull --no-cache"; shift;;
@@ -23,9 +25,11 @@ while [ $# -gt 0 ]; do
     esac
 done
 
-BUILD_DIR=$(dirname $0)
-IMAGE_NAME=$(basename ${BUILD_DIR})
+cd $(dirname $0)/
+BUILD_DIR=./.jenkins-build
+IMAGE_NAME=jenkins-${VERSION}
 
+./prepare_build.sh ${VERSION} ${BUILD_DIR}
 cd ${BUILD_DIR}
 
 docker build ${DOCKER_BUILD_ARG} -t ${IMAGE_NAME} .
@@ -33,7 +37,7 @@ docker build ${DOCKER_BUILD_ARG} -t ${IMAGE_NAME} .
 export ACTION_JENKINS_KEEPALIVE=${KEEPALIVE}
 export ACTION_JENKINS_STANDALONE=${STANDALONE}
 export ACTION_JENKINS_WORKSPACE=/workspace
-export ACTION_JENKINS_VERSION=/workspace/${IMAGE_NAME}/.version
+export ACTION_JENKINS_VERSION=/workspace/.version
 export ACTION_JENKINS_ADMIN_USERNAME=jenkins
 export ACTION_JENKINS_ADMIN_PASSWORD=jenkins
 export ACTION_JENKINS_JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
@@ -41,6 +45,10 @@ export ACTION_JENKINS_PLUGINS_FORCE_UPGRADE=true
 export ACTION_JENKINS_TRY_UPGRADE_IF_NO_MARKER=true
 export ACTION_JENKINS_STARTUP_TIMEOUT=300
 export ACTION_JENKINS_SHUTDOWN_TIMEOUT=60
+export ACTION_JENKINS_MASTER_EXECUTORS=4
+export ACTION_JENKINS_MASTER_LABELS=
+
+set -x
 
 docker run -it --rm \
   -e ACTION_JENKINS_KEEPALIVE \
@@ -54,5 +62,7 @@ docker run -it --rm \
   -e ACTION_JENKINS_TRY_UPGRADE_IF_NO_MARKER \
   -e ACTION_JENKINS_STARTUP_TIMEOUT \
   -e ACTION_JENKINS_SHUTDOWN_TIMEOUT \
+  -e ACTION_JENKINS_MASTER_EXECUTORS \
+  -e ACTION_JENKINS_MASTER_LABELS \
   -v $(pwd)/..:${ACTION_JENKINS_WORKSPACE} \
   ${DOCKER_RUN_ARG} ${IMAGE_NAME} "$@"

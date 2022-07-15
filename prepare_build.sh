@@ -12,11 +12,18 @@ VERSION=$1
 TARGET=$2
 
 rm -rf ./${TARGET}
-cp -r jenkins-lts/ ./${TARGET}
-rm -rf ./${TARGET}/.version
+mkdir -p ./${TARGET}
+cp -r ./* ./${TARGET}/
 rm -f ./${TARGET}/action.yml
+
+if [ ${VERSION} == "last-good-version" ]; then
+    VERSION=$(cat last-good-version/version)
+    mv last-good-version/plugin.txt ${TARGET}/
+fi
+
 sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ./${TARGET}/Dockerfile > ./${TARGET}/Dockerfile.tmp
 mv ./${TARGET}/Dockerfile.tmp ./${TARGET}/Dockerfile
+
 
 exit 0
 

@@ -102,7 +102,7 @@ else
     if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
         stop_jenkins >> /stdout 2>&1 || exit_failure stop_jenkins
     else
-        echo "ACTION_JENKINS_KEEPALIVE=true : keep instance running"
+        echo "ACTION_JENKINS_KEEPALIVE=true : keep instance running" >> /stdout 2>&1
         interruptible_sleep infinity
     fi
 fi
