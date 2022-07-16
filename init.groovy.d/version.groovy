@@ -32,7 +32,7 @@ def dumpVersion() {
 
     print fullVersionStr
 
-    def target = System.getenv('ACTION_JENKINS_VERSION')
+    def target = System.getenv('INPUT_DUMP_VERSION_PATH')
 
     if (target != null) {
         new File(target).mkdirs()

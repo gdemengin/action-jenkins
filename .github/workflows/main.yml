@@ -1,17 +1,37 @@
-name: tests
+name: tests jenkins versions
 
 on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      jenkins-versions:
+        required: true
+        description: "list of jenkins versions to test.\nspecial keywords : lts & last-good-version to use\nexample: \"lts last-good-version 2.346.2"
   schedule:
     - cron:  '0 19 * * 2'
 
 jobs:
+  gen-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix_json: ${{ steps.gen-matrix.outputs.matrix_json }}
+    steps:
+      - name: gen-matrix
+        id: gen-matrix
+        run: |
+          default_versions="lts last-good-version 2.346.1 2.332.4"
+          matrix_versions="${{ inputs.jenkins-versions }}"
+          matrix_versions="${matrix_versions:-${default_versions}}"
+          versions_json=$(for ver in ${matrix_versions}; do echo "{'version':'${ver}'},"; done)
+          versions_json=$(echo "${versions_json%?}" | tr '\n' ' ')
+          echo "::set-output name=matrix_json::{'include':[${versions_json%?}]}"
+
   jenkins-versions:
+    needs: gen-matrix
     strategy:
-      matrix:
-        version: [lts, last-good-version, 2.346.1, 2.332.4]
+      fail-fast: false
+      matrix: ${{ fromJSON( needs.gen-matrix.outputs.matrix_json ) }}
     runs-on: ubuntu-latest
     name: test on jenkins-${{ matrix.version }}
     steps:

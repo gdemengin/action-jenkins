@@ -2,7 +2,6 @@
 install jenkins as github action
 
 [![tests](https://github.com/gdemengin/action-jenkins/actions/workflows/main.yml/badge.svg)](https://github.com/gdemengin/action-jenkins/actions/workflows/main.yml)
-[![bump last-good-version](https://github.com/gdemengin/action-jenkins/actions/workflows/update-version.yml/badge.svg)](https://github.com/gdemengin/action-jenkins/actions/workflows/update-version.yml)
 
 Tested with:
 

@@ -1,8 +1,11 @@
 import jenkins.model.*
 
-// default 4 executors and no label for master node
-def executors = (System.getenv("ACTION_JENKINS_MASTER_EXECUTORS") ?: '4').toInteger()
-def labels = System.getenv("ACTION_JENKINS_MASTER_LABELS") ?: ''
+def executors = System.getenv("INPUT_MASTER_NUM_EXECUTORS")
+def labels = System.getenv("INPUT_MASTER_LABELS")
 
-Jenkins.instance.setNumExecutors(executors)
+assert executors != null, 'missing env var INPUT_MASTER_NUM_EXECUTORS'
+assert executors.isInteger(), 'env var INPUT_MASTER_NUM_EXECUTORS is not an integer'
+assert labels != null, 'missing env var INPUT_MASTER_LABELS'
+
+Jenkins.instance.setNumExecutors(executors.toInteger())
 Jenkins.instance.setLabelString(labels)

@@ -1,6 +1,9 @@
 #!/bin/bash
 
 set -e
+set -u
+
+source /env
 
 function interruptible_sleep() {
     sleep $1 &
@@ -9,11 +12,11 @@ function interruptible_sleep() {
 
 function start_jenkins() {
     echo "$(date) starting jenkins instance"
-    export JAVA_OPTS=${ACTION_JENKINS_JAVA_OPTS:-"-Djenkins.install.runSetupWizard=false"}
-    export PLUGINS_FORCE_UPGRADE=${ACTION_JENKINS_PLUGINS_FORCE_UPGRADE:-true}
-    export TRY_UPGRADE_IF_NO_MARKER=${ACTION_JENKINS_TRY_UPGRADE_IF_NO_MARKER:-true}
+    export JAVA_OPTS=${INPUT_JAVA_OPTS}
+    export PLUGINS_FORCE_UPGRADE=${INPUT_PLUGINS_FORCE_UPGRADE}
+    export TRY_UPGRADE_IF_NO_MARKER=${INPUT_TRY_UPGRADE_IF_NO_MARKER}
 
-    if [ "${ACTION_JENKINS_STANDALONE}" == "true" ]; then
+    if [ "${INPUT_STANDALONE}" == "true" ]; then
         # start jenkins in foreground to be only process in container
         /usr/local/bin/jenkins.sh
     else
@@ -22,7 +25,7 @@ function start_jenkins() {
         local elapsed=0
         local start=
         local stop=
-        local timeout=${ACTION_JENKINS_STARTUP_TIMEOUT:-300}
+        local timeout=${INPUT_STARTUP_TIMEOUT}
         while [ ${elapsed} -lt ${timeout} ] && [ "${start}" == "0" -o "${start}" == "" ]; do
             start=$(cat /jenkins.log | grep 'Completed initialization' | wc -l)
             stop=$(cat /jenkins.log | grep 'Jenkins stopped' | wc -l)
@@ -46,7 +49,7 @@ function stop_jenkins() {
     # wait for shutdown
     local elapsed=0
     local stop=$(ps -efla | grep java | grep -v grep | wc -l)
-    local timeout=${ACTION_JENKINS_SHUTDOWN_TIMEOUT:-60}
+    local timeout=${INPUT_SHUTDOWN_TIMEOUT}
     while [ ${elapsed} -lt ${timeout} ] && [ "${stop}" != "0" ] && [ "${stop}" != "" ]; do
         stop=$(ps -efla | grep java | grep -v grep | wc -l)
         echo "$(date) waiting for jenkins to stop"
@@ -60,17 +63,17 @@ function stop_jenkins() {
 }
 
 function exit_failure() {
-    return_code=$1
-    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
-        echo "$2 FAILED with code ${return_code}: stop jenkins and exit"
+    return_code=$?
+    if [ "${INPUT_KEEPALIVE}" != "true" ]; then
+        echo "$1 FAILED with code ${return_code}: stop jenkins and exit"
         stop_jenkins
     fi
 
     # sleep to make sure logs are flushed
     sleep 10
-    echo "$2 FAILED with code ${return_code}"
+    echo "$1 FAILED with code ${return_code}"
 
-    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
+    if [ "${INPUT_KEEPALIVE}" != "true" ]; then
         exit ${return_code}
     fi
 }
@@ -85,7 +88,7 @@ function interrupt() {
     exit 1
 }
 
-if [ "${ACTION_JENKINS_STANDALONE}" == "true" ]; then
+if [ "${INPUT_STANDALONE}" == "true" ]; then
     start_jenkins
 else
     > /jenkins.log
@@ -97,12 +100,12 @@ else
 
     # TODO : do the work
     interruptible_sleep 10
-    # work || exit_failure $? work
+    # work || exit_failure work
 
-    if [ "${ACTION_JENKINS_KEEPALIVE}" != "true" ]; then
+    if [ "${INPUT_KEEPALIVE}" != "true" ]; then
         stop_jenkins >> /stdout 2>&1 || exit_failure stop_jenkins
     else
-        echo "ACTION_JENKINS_KEEPALIVE=true : keep instance running" >> /stdout 2>&1
+        echo "INPUT_KEEPALIVE=true : keep instance running" >> /stdout 2>&1
         interruptible_sleep infinity
     fi
 fi

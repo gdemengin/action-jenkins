@@ -22,8 +22,9 @@ COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli --verbose --plugin-file /usr/share/jenkins/ref/plugins.txt
 
 COPY init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/
-COPY jenkins-home /var/jenkins_home
+COPY jenkins_home /var/jenkins_home
 COPY entrypoint.sh /entrypoint.sh
+COPY env /env
 RUN chown -R jenkins:jenkins /var/jenkins_home \
  && chmod +x /entrypoint.sh
 

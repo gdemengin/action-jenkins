@@ -5,22 +5,66 @@ inputs:
     description: "The jenkins version to use (default: lts)"
     required: false
     default: "lts"
+
+  # environment for jenkins instance startup command
+  JAVA_OPTS:
+    required: false
+    default: -Djenkins.install.runSetupWizard=false
+  PLUGINS_FORCE_UPGRADE:
+    required: false
+    default: true
+  TRY_UPGRADE_IF_NO_MARKER:
+    required: false
+    default: true
+
+  # start/stop timeouts
+  startup-timeout:
+    required: false
+    default: 300
+  shutdown-timeout:
+    required: false
+    default: 60
+
+  # instance configuration (used in init.groovy.d/*)
+  admin-username:
+    required: false
+    default: "jenkins"
+  admin-password:
+    required: false
+    default: jenkins
+  master-num-executors:
+    required: false
+    default: 4
+  master-labels:
+    required: false
+    default: ''
+
 runs:
   using: "composite"
   steps:
-    - name: "Prepare files for build"
+    - name: "Prepare files"
       shell: "bash"
+      env:
+        INPUT_JAVA_OPTS: ${{ inputs.JAVA_OPTS }}
+        INPUT_PLUGINS_FORCE_UPGRADE: ${{ inputs.PLUGINS_FORCE_UPGRADE }}
+        INPUT_TRY_UPGRADE_IF_NO_MARKER: ${{ inputs.TRY_UPGRADE_IF_NO_MARKER }}
+        INPUT_STARTUP_TIMEOUT: ${{ inputs.startup-timeout }}
+        INPUT_SHUTDOWN_TIMEOUT: ${{ inputs.shutdown-timeout }}
+        INPUT_ADMIN_USERNAME: ${{ inputs.admin-username }}
+        INPUT_ADMIN_PASSWORD: ${{ inputs.admin-password }}
+        INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}
+        INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
       run: |
-        chmod +x ./prepare_build.sh
-        ./prepare_build.sh ${{inputs.version}} ./.jenkins-build
+        chmod +x ./prepare.sh
+        ./prepare.sh ${{inputs.version}} ./.jenkins
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ./.jenkins-build
+      uses: ./.jenkins
 
     - name: "cleanup"
       shell: "bash"
       run: |
-        rm -rf ./.jenkins-build
+        rm -rf ./.jenkins
 
 branding:
   icon: 'server'
