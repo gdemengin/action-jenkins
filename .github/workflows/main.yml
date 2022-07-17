@@ -7,7 +7,7 @@ on:
     inputs:
       jenkins-versions:
         required: true
-        description: "list of jenkins versions to test.\nspecial keywords : lts & last-good-version to use\nexample: \"lts last-good-version 2.346.2"
+        description: "jenkins versions to test (example: \"lts last-good-version 2.346.2\")"
   schedule:
     - cron:  '0 19 * * 2'
 
