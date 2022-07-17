@@ -14,11 +14,7 @@ TARGET=$2
 # prepare folder to build docker container
 # and run it as action
 rm -rf ./${TARGET}
-mkdir -p ./${TARGET}
-cp -r ./* ./${TARGET}/
-
-# do not propagate the parent action
-rm -f ./${TARGET}/action.yml
+cp -r ./src ./${TARGET}/
 
 > ./${TARGET}/env
 
