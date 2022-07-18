@@ -23,14 +23,14 @@ jobs:
         with:
           version: last-good-version
 
-      - name: update README.md
+      - name: update version
         run: |
           chmod +x update_version.sh
           ./update_version.sh last-good-version
 
-      - name: auto commit last-good-version
+      - name: auto commit version update
         if: github.event_name != 'pull_request'
         uses: stefanzweifel/git-auto-commit-action@v4.14.1
         with:
           commit_message: "[bot] Update last good version"
-          file_pattern: last-good-version README.md
+          file_pattern: last-good-version README.md src/plugins.txt

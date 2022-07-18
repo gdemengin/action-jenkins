@@ -20,7 +20,7 @@ jobs:
       - name: gen-matrix
         id: gen-matrix
         run: |
-          default_versions="lts last-good-version 2.346.1 2.332.4"
+          default_versions="lts last-good-version 2.319.3 2.249.3 2.190.1 2.89.4"
           matrix_versions="${{ inputs.jenkins-versions }}"
           matrix_versions="${matrix_versions:-${default_versions}}"
           versions_json=$(for ver in ${matrix_versions}; do echo "{'version':'${ver}'},"; done)
