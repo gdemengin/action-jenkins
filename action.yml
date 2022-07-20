@@ -54,6 +54,7 @@ runs:
         INPUT_TRY_UPGRADE_IF_NO_MARKER: ${{ inputs.TRY_UPGRADE_IF_NO_MARKER }}
         INPUT_STARTUP_TIMEOUT: ${{ inputs.startup-timeout }}
         INPUT_SHUTDOWN_TIMEOUT: ${{ inputs.shutdown-timeout }}
+        INPUT_PLUGINS: ${{ inputs.plugins }}
         INPUT_ADMIN_USERNAME: ${{ inputs.admin-username }}
         INPUT_ADMIN_PASSWORD: ${{ inputs.admin-password }}
         INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}

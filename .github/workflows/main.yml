@@ -46,7 +46,7 @@ jobs:
           version: ${{ matrix.version }}
 
       # tests all with no plugins
-      - name: test jenkins-${{ matrix.version }} with empty pluginbs
+      - name: test jenkins-${{ matrix.version }} with empty plugin list
         uses: ./
         with:
           version: ${{ matrix.version }}

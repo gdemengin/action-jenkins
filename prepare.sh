@@ -52,7 +52,7 @@ touch ./${TARGET}/jenkins_home/.notempty
 
 if [ "${VERSION}" == "last-good-version" ]; then
     VERSION=$(cat last-good-version/version)
-    INPUT_PLUGINS=${INPUT_PLUGINS:-last-good-version/plugins.txt} ${TARGET}/
+    INPUT_PLUGINS=${INPUT_PLUGINS:-last-good-version/plugins.txt}
 fi
 
 if [ "${INPUT_PLUGINS}" != "" ]; then
