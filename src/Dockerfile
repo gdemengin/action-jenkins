@@ -26,11 +26,16 @@ RUN grep X3 /etc/ca-certificates.conf \
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 # use jenkins-plugin-cli when present, otherwise fallback to old install-plugins.sh
-RUN if which jenkins-plugin-cli; then \
-    jenkins-plugin-cli --verbose --plugin-file /usr/share/jenkins/ref/plugins.txt; \
-  else \
-    /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt; \
-  fi
+# but it does not manage versions of dependencies correctly so specify explicitely versions to use
+# https://issues.jenkins.io/browse/JENKINS-40905
+RUN \
+    if [ $(cat /usr/share/jenkins/ref/plugins.txt | wc -l) != 0 ]; then \
+        if which jenkins-plugin-cli; then \
+            jenkins-plugin-cli --verbose --plugin-file /usr/share/jenkins/ref/plugins.txt; \
+        else \
+            /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt; \
+        fi; \
+    fi
 
 COPY init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/
 COPY jenkins_home /var/jenkins_home

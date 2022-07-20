@@ -25,6 +25,10 @@ inputs:
     required: false
     default: 60
 
+  # override
+  plugins:
+    required: false
+
   # instance configuration (used in init.groovy.d/*)
   admin-username:
     required: false

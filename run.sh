@@ -27,7 +27,7 @@ done
 
 # input params
 export GITHUB_WORKSPACE=/workspace
-export INPUT_DUMP_VERSION_PATH=${GITHUB_WORKSPACE}/.version
+export INPUT_DUMP_VERSION_PATH=\${GITHUB_WORKSPACE}/.version
 
 export INPUT_KEEPALIVE=${KEEPALIVE}
 export INPUT_STANDALONE=${STANDALONE}

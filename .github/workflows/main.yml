@@ -20,7 +20,8 @@ jobs:
       - name: gen-matrix
         id: gen-matrix
         run: |
-          default_versions="lts last-good-version 2.319.3 2.249.3 2.190.1 2.89.4"
+          # default ; test on a few LTS versions from https://www.jenkins.io/changelog-stable/
+          default_versions="lts last-good-version 2.319.3 2.263.4 2.190.1 2.89.4"
           matrix_versions="${{ inputs.jenkins-versions }}"
           matrix_versions="${matrix_versions:-${default_versions}}"
           versions_json=$(for ver in ${matrix_versions}; do echo "{'version':'${ver}'},"; done)
@@ -36,7 +37,25 @@ jobs:
     name: test on jenkins-${{ matrix.version }}
     steps:
       - uses: actions/checkout@v3
+
+      # test lts and lgv with their plugin list (fixed for lgv)
       - name: test jenkins-${{ matrix.version }}
+        if matrix.version == 'lts' || matrix.version == 'last-good-version'
         uses: ./
         with:
           version: ${{ matrix.version }}
+
+      # tests all with no plugins
+      - name: test jenkins-${{ matrix.version }} with empty pluginbs
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          plugins: empty-plugins.txt
+
+      # test old versions of jenkins with fixed versions of plugins
+      - name: test jenkins-${{ matrix.version }} with plugins
+        if matrix.version == '2.190.1'
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          plugins: test/plugins-${{ matrix.version }}.txt

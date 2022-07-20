@@ -21,11 +21,14 @@ cp -r ./src ./${TARGET}/
 function set_input_env() {
     if [ -z ${!1+x} ]; then
         # env var $1 is unset
-        echo export $1=\"$2\" >> ./${TARGET}/env
+        if [ $# == 2 ]; then
+            echo export $1=\"$2\" >> ./${TARGET}/env
+        fi
     else
         echo export $1=\"${!1}\" >> ./${TARGET}/env
     fi
 }
+# default values
 set_input_env INPUT_JAVA_OPTS "-Djenkins.install.runSetupWizard=false"
 set_input_env INPUT_PLUGINS_FORCE_UPGRADE true
 set_input_env INPUT_TRY_UPGRADE_IF_NO_MARKER true
@@ -38,15 +41,22 @@ set_input_env INPUT_MASTER_LABELS ""
 set_input_env INPUT_KEEPALIVE false
 set_input_env INPUT_STANDALONE false
 
+# no default value
+set_input_env INPUT_DUMP_VERSION_PATH
+
 cat ./${TARGET}/env
 
 mkdir -p ./${TARGET}/jenkins_home
 # avoid diocker issue when copying empty folders
 touch ./${TARGET}/jenkins_home/.notempty
 
-if [ ${VERSION} == "last-good-version" ]; then
+if [ "${VERSION}" == "last-good-version" ]; then
     VERSION=$(cat last-good-version/version)
-    cp last-good-version/plugins.txt ${TARGET}/
+    INPUT_PLUGINS=${INPUT_PLUGINS:-last-good-version/plugins.txt} ${TARGET}/
+fi
+
+if [ "${INPUT_PLUGINS}" != "" ]; then
+    cp ${INPUT_PLUGINS} ${TARGET}/plugins.txt
 fi
 
 sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ./${TARGET}/Dockerfile > ./${TARGET}/Dockerfile.tmp

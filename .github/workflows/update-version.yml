@@ -16,7 +16,7 @@ jobs:
       - name: test jenkins-lts
         uses: ./
         env:
-          ACTION_JENKINS_VERSION: ${{github.workspace}}/last-good-version
+          INPUT_VERSION_DUMP_PATH: \${GITHUB_WORKSPACE}/last-good-version
 
       - name: double check jenkins last good version
         uses: ./
