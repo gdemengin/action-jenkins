@@ -40,7 +40,7 @@ jobs:
 
       # test lts and lgv with their plugin list (fixed for lgv)
       - name: test jenkins-${{ matrix.version }}
-        if matrix.version == 'lts' || matrix.version == 'last-good-version'
+        if: matrix.version == 'lts' || matrix.version == 'last-good-version'
         uses: ./
         with:
           version: ${{ matrix.version }}
@@ -54,7 +54,7 @@ jobs:
 
       # test old versions of jenkins with fixed versions of plugins
       - name: test jenkins-${{ matrix.version }} with plugins
-        if matrix.version == '2.190.1'
+        if: matrix.version == '2.190.1'
         uses: ./
         with:
           version: ${{ matrix.version }}
