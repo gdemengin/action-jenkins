@@ -1,5 +1,5 @@
-# default plugins suggested in setupwizard (last updated 07/2022)
-# https://github.com/jenkinsci/jenkins/blob/master/core/src/main/resources/jenkins/install/platform-plugins.json
+# default plugins suggested in setupwizard
+# https://raw.githubusercontent.com/jenkinsci/jenkins/master/core/src/main/resources/jenkins/install/platform-plugins.json
 ant
 antisamy-markup-formatter
 build-timeout
