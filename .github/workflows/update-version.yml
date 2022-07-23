@@ -16,7 +16,7 @@ jobs:
       - name: test jenkins-lts
         uses: ./
         with:
-          dump-version-path: \${GITHUB_WORKSPACE}/.version
+          dump-version-path: ${GITHUB_WORKSPACE}/.version
 
       - name: update version
         run: |
