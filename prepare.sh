@@ -33,9 +33,7 @@ set_input_env INPUT_MASTER_NUM_EXECUTORS 4
 set_input_env INPUT_MASTER_LABELS ""
 set_input_env INPUT_KEEPALIVE false
 set_input_env INPUT_STANDALONE false
-
-# no default value
-set_input_env INPUT_DUMP_VERSION_PATH
+set_input_env INPUT_DUMP_VERSION_PATH ""
 
 cat ./${TARGET}/entrypoint/input_env.sh
 

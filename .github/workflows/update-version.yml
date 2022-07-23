@@ -16,17 +16,19 @@ jobs:
       - name: test jenkins-lts
         uses: ./
         with:
-          dump-version-path: \${GITHUB_WORKSPACE}/last-good-version
+          dump-version-path: \${GITHUB_WORKSPACE}/.version
+
+      - name: update version
+        run: |
+          rm -rf last-good-version
+          mv .version last-good-version
+          chmod +x update_version.sh
+          ./update_version.sh last-good-version
 
       - name: double check jenkins last good version
         uses: ./
         with:
           version: last-good-version
-
-      - name: update version
-        run: |
-          chmod +x update_version.sh
-          ./update_version.sh last-good-version
 
       - name: auto commit version update
         if: github.event_name != 'pull_request'

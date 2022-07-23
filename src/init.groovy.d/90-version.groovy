@@ -34,7 +34,8 @@ def dumpVersion() {
 
     def target = System.getenv('INPUT_DUMP_VERSION_PATH')
 
-    if (target != null) {
+    if (target != null && target != '') {
+        println "dumping version in ${target}"
         new File(target).mkdirs()
         new File("${target}/version").write(instanceVersion)
         new File("${target}/plugins.txt").write(pluginsShortVersionsStr)
