@@ -3,7 +3,16 @@
 set -e
 
 function usage() {
-    echo "usage: $0 [--version <version>] [--keepalive] [--standalone] [--no-cache] [--docker-run-arg <arg>] [--] <entrypoint parameters>"
+    echo "usage: $0 [options] [--] <entrypoint parameters>"
+    echo "options:"
+    echo "  --version <version>"
+    echo "  --keepalive"
+    echo "  --standalone"
+    echo "  --no-cache"
+    echo "  --docker-run-arg <arg>"
+    echo "  --plugins <plugins file>"
+    echo "  --init_groovy <init.groovy.d folder>"
+    echo "  --entrypoint <entrypoint folder>"
 }
 
 KEEPALIVE=false
@@ -20,6 +29,9 @@ while [ $# -gt 0 ]; do
         --standalone) STANDALONE=true; shift;;
         --no-cache) DOCKER_BUILD_ARG="--pull --no-cache"; shift;;
         --docker-run-arg) DOCKER_RUN_ARG="$2"; shift 2;;
+        --plugins) export INPUT_PLUGINS=$2; shift 2;;
+        --init_groovy) export INPUT_INIT_GROOVY=$2; shift 2;;
+        --entrypoint) export INPUT_ENTRYPOINT=$2; shift 2;;
         --) shift; break;;
         *) echo "unknown parameter $1"; usage; exit 1;;
     esac

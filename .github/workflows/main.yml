@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # test lts and lgv with their plugin list (fixed for lgv)
-      - name: test jenkins-${{ matrix.version }}
+      - name: test jenkins-${{ matrix.version }} with default plugin list
         if: matrix.version == 'lts' || matrix.version == 'last-good-version'
         uses: ./
         with:
@@ -53,7 +53,7 @@ jobs:
           plugins: test/empty-plugins.txt
 
       # test old versions of jenkins with fixed versions of plugins
-      - name: test jenkins-${{ matrix.version }} with plugins
+      - name: test jenkins-${{ matrix.version }} with fixed versions of plugins
         if: matrix.version == '2.190.1'
         uses: ./
         with:

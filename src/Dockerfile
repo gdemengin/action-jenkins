@@ -38,11 +38,10 @@ RUN \
     fi
 
 COPY init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/
-COPY jenkins_home /var/jenkins_home
-COPY entrypoint.sh /entrypoint.sh
-COPY env /env
+COPY jenkins_home/ /var/jenkins_home
+COPY entrypoint/ /entrypoint
 RUN chown -R jenkins:jenkins /var/jenkins_home \
- && chmod +x /entrypoint.sh
+ && chmod +x /entrypoint/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint/entrypoint.sh"]
 HEALTHCHECK CMD curl -sSLf http://localhost:8080/login >/dev/null || exit 1

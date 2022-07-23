@@ -1,11 +1,8 @@
 import jenkins.model.*
 import hudson.security.*
 
-def adminUsername = System.getenv("INPUT_ADMIN_USERNAME")
-def adminPassword = System.getenv("INPUT_ADMIN_PASSWORD")
-
-assert adminUsername != null, 'missing env var INPUT_ADMIN_USERNAME'
-assert adminPassword != null, 'missing env var INPUT_ADMIN_PASSWORD'
+def adminUsername = 'jenkins'
+def adminPassword = 'jenkins'
 
 def hudsonRealm = new HudsonPrivateSecurityRealm(false)
 hudsonRealm.createAccount(adminUsername, adminPassword)

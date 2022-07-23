@@ -16,26 +16,19 @@ TARGET=$2
 rm -rf ./${TARGET}
 cp -r ./src ./${TARGET}/
 
-> ./${TARGET}/env
+> ./${TARGET}/entrypoint/input_env.sh
 
 function set_input_env() {
     if [ -z ${!1+x} ]; then
         # env var $1 is unset
         if [ $# == 2 ]; then
-            echo export $1=\"$2\" >> ./${TARGET}/env
+            echo export $1=\"$2\" >> ./${TARGET}/entrypoint/input_env.sh
         fi
     else
-        echo export $1=\"${!1}\" >> ./${TARGET}/env
+        echo export $1=\"${!1}\" >> ./${TARGET}/entrypoint/input_env.sh
     fi
 }
 # default values
-set_input_env INPUT_JAVA_OPTS "-Djenkins.install.runSetupWizard=false"
-set_input_env INPUT_PLUGINS_FORCE_UPGRADE true
-set_input_env INPUT_TRY_UPGRADE_IF_NO_MARKER true
-set_input_env INPUT_STARTUP_TIMEOUT 300
-set_input_env INPUT_SHUTDOWN_TIMEOUT 60
-set_input_env INPUT_ADMIN_USERNAME jenkins
-set_input_env INPUT_ADMIN_PASSWORD jenkins
 set_input_env INPUT_MASTER_NUM_EXECUTORS 4
 set_input_env INPUT_MASTER_LABELS ""
 set_input_env INPUT_KEEPALIVE false
@@ -44,11 +37,7 @@ set_input_env INPUT_STANDALONE false
 # no default value
 set_input_env INPUT_DUMP_VERSION_PATH
 
-cat ./${TARGET}/env
-
-mkdir -p ./${TARGET}/jenkins_home
-# avoid diocker issue when copying empty folders
-touch ./${TARGET}/jenkins_home/.notempty
+cat ./${TARGET}/entrypoint/input_env.sh
 
 if [ "${VERSION}" == "last-good-version" ]; then
     VERSION=$(cat last-good-version/version)
@@ -57,6 +46,23 @@ fi
 
 if [ "${INPUT_PLUGINS}" != "" ]; then
     cp ${INPUT_PLUGINS} ${TARGET}/plugins.txt
+fi
+
+if [ "${INPUT_INIT_GROOVY}" != "" ]; then
+    cp -r ${INPUT_INIT_GROOVY}/* ${TARGET}/init.groovy.d/
+fi
+
+if [ "${INPUT_JENKINS_HOME}" != "" ]; then
+    cp -r ${INPUT_JENKINS_HOME} ${TARGET}/jenkins_home/
+else
+    mkdir -p ./${TARGET}/jenkins_home
+    # avoid docker issue when copying empty folders
+    touch ./${TARGET}/jenkins_home/.not_empty
+fi
+
+if [ "${INPUT_ENTRYPOINT}" != "" ]; then
+    [ -e ${INPUT_ENTRYPOINT}/entrypoint.sh ] && echo "ERROR cannot override entrypoint.sh, use ${INPUT_ENTRYPOINT}/init.sh" && exit 1
+    cp -r ${INPUT_ENTRYPOINT}/* ${TARGET}/entrypoint/
 fi
 
 sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ./${TARGET}/Dockerfile > ./${TARGET}/Dockerfile.tmp

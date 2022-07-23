@@ -6,36 +6,23 @@ inputs:
     required: false
     default: "lts"
 
-  # environment for jenkins instance startup command
-  JAVA_OPTS:
+  dump-version-path:
+    description: "path to dump version files (see src/init.groovy.d/version.groovy)"
     required: false
-    default: -Djenkins.install.runSetupWizard=false
-  PLUGINS_FORCE_UPGRADE:
-    required: false
-    default: true
-  TRY_UPGRADE_IF_NO_MARKER:
-    required: false
-    default: true
-
-  # start/stop timeouts
-  startup-timeout:
-    required: false
-    default: 300
-  shutdown-timeout:
-    required: false
-    default: 60
 
   # override
   plugins:
+    description: "plugins to install (format plugin[:version])"
+    required: false
+  init_groovy:
+    description: "folder with groovy script to run in init.groovy.d"
+    required: false
+  entrypoint:
+    description: "entrypoint folder (must contain init.sh with default functions, see src/entrypoint/init.sh)"
     required: false
 
-  # instance configuration (used in init.groovy.d/*)
-  admin-username:
-    required: false
-    default: "jenkins"
-  admin-password:
-    required: false
-    default: jenkins
+
+  # master configuration (see init.groovy.d/10-config-master.groovy)
   master-num-executors:
     required: false
     default: 4
@@ -49,14 +36,9 @@ runs:
     - name: "Prepare files"
       shell: "bash"
       env:
-        INPUT_JAVA_OPTS: ${{ inputs.JAVA_OPTS }}
-        INPUT_PLUGINS_FORCE_UPGRADE: ${{ inputs.PLUGINS_FORCE_UPGRADE }}
-        INPUT_TRY_UPGRADE_IF_NO_MARKER: ${{ inputs.TRY_UPGRADE_IF_NO_MARKER }}
-        INPUT_STARTUP_TIMEOUT: ${{ inputs.startup-timeout }}
-        INPUT_SHUTDOWN_TIMEOUT: ${{ inputs.shutdown-timeout }}
         INPUT_PLUGINS: ${{ inputs.plugins }}
-        INPUT_ADMIN_USERNAME: ${{ inputs.admin-username }}
-        INPUT_ADMIN_PASSWORD: ${{ inputs.admin-password }}
+        INPUT_INIT_GROOVY: ${{ inputs.init_groovy }}
+        INPUT_ENTRYPOINT: ${{ inputs.entrypoint }}
         INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}
         INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
       run: |

@@ -15,8 +15,8 @@ jobs:
 
       - name: test jenkins-lts
         uses: ./
-        env:
-          INPUT_VERSION_DUMP_PATH: \${GITHUB_WORKSPACE}/last-good-version
+        with:
+          dump-version-path: \${GITHUB_WORKSPACE}/last-good-version
 
       - name: double check jenkins last good version
         uses: ./
