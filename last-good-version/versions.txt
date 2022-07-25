@@ -64,12 +64,12 @@ Plugins :
 	SCM API Plugin (scm-api) v616.ve67136f6c77d
 	Script Security Plugin (script-security) v1175.v4b_d517d6db_f0
 	SnakeYAML API Plugin (snakeyaml-api) v1.30.2-76.vc104f7ce9870
-	SSH Credentials Plugin (ssh-credentials) v291.v8211e4f8efb_c
+	SSH Credentials Plugin (ssh-credentials) v295.vced876c18eb_4
 	SSH Build Agents plugin (ssh-slaves) v1.834.v622da_57f702c
 	SSH server (sshd) v3.0.3
 	Structs Plugin (structs) v324.va_f5d6774f3a_d
 	Timestamper (timestamper) v1.18
-	Token Macro Plugin (token-macro) v293.v283932a_0a_b_49
+	Token Macro Plugin (token-macro) v308.v4f2b_ed62b_b_16
 	Trilead API Plugin (trilead-api) v1.67.vc3938a_35172f
 	Variant Plugin (variant) v1.4
 	Pipeline (workflow-aggregator) v590.v6a_d052e5a_a_b_5
