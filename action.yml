@@ -33,7 +33,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ./prepare.sh ${{inputs.version}} ./.jenkins
+    - run: prepare.sh ${{inputs.version}} ./.jenkins
       shell: "bash"
       env:
         INPUT_PLUGINS: ${{ inputs.plugins }}
