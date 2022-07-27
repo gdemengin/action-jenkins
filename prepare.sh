@@ -2,30 +2,31 @@
 
 set -e
 
-[ $# -eq 2 ] || {
+[ $# -eq 1 ] || {
     echo "ERROR wrong numbre of parameters"
-    echo "usage: $0 <jenkins version> <build folder>"
+    echo "usage: $0 <jenkins version>"
     exit 1
 }
 
 VERSION=$1
-TARGET=$2
+SOURCE=$(dirname $0)
+TARGET=${SOURCE}/.jenkins
 
 # prepare folder to build docker container
 # and run it as action
-rm -rf ./${TARGET}
-cp -r ./src ./${TARGET}/
+rm -rf ${TARGET}
+cp -r ${SOURCE}/src ${TARGET}/
 
-> ./${TARGET}/entrypoint/input_env.sh
+> ${TARGET}/entrypoint/input_env.sh
 
 function set_input_env() {
     if [ -z ${!1+x} ]; then
         # env var $1 is unset
         if [ $# == 2 ]; then
-            echo export $1=\"$2\" >> ./${TARGET}/entrypoint/input_env.sh
+            echo export $1=\"$2\" >> ${TARGET}/entrypoint/input_env.sh
         fi
     else
-        echo export $1=\"${!1}\" >> ./${TARGET}/entrypoint/input_env.sh
+        echo export $1=\"${!1}\" >> ${TARGET}/entrypoint/input_env.sh
     fi
 }
 # default values
@@ -35,7 +36,7 @@ set_input_env INPUT_KEEPALIVE false
 set_input_env INPUT_STANDALONE false
 set_input_env INPUT_DUMP_VERSION_PATH ""
 
-cat ./${TARGET}/entrypoint/input_env.sh
+cat ${TARGET}/entrypoint/input_env.sh
 
 if [ "${VERSION}" == "last-good-version" ]; then
     VERSION=$(cat last-good-version/version)
@@ -53,9 +54,9 @@ fi
 if [ "${INPUT_JENKINS_HOME}" != "" ]; then
     cp -r ${INPUT_JENKINS_HOME} ${TARGET}/jenkins_home/
 else
-    mkdir -p ./${TARGET}/jenkins_home
+    mkdir -p ${TARGET}/jenkins_home
     # avoid docker issue when copying empty folders
-    touch ./${TARGET}/jenkins_home/.not_empty
+    touch ${TARGET}/jenkins_home/.not_empty
 fi
 
 if [ "${INPUT_ENTRYPOINT}" != "" ]; then
@@ -63,8 +64,8 @@ if [ "${INPUT_ENTRYPOINT}" != "" ]; then
     cp -r ${INPUT_ENTRYPOINT}/* ${TARGET}/entrypoint/
 fi
 
-sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ./${TARGET}/Dockerfile > ./${TARGET}/Dockerfile.tmp
-mv ./${TARGET}/Dockerfile.tmp ./${TARGET}/Dockerfile
+sed "s|FROM jenkins/jenkins:lts|FROM jenkins/jenkins:${VERSION}|" ${TARGET}/Dockerfile > ${TARGET}/Dockerfile.tmp
+mv ${TARGET}/Dockerfile.tmp ${TARGET}/Dockerfile
 
 exit 0
 

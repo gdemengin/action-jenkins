@@ -45,7 +45,7 @@ export INPUT_KEEPALIVE=${KEEPALIVE}
 export INPUT_STANDALONE=${STANDALONE}
 
 cd $(dirname $0)/
-./prepare.sh ${VERSION} .jenkins
+./prepare.sh ${VERSION}
 cd .jenkins
 
 IMAGE_NAME=jenkins-${VERSION}

@@ -43,16 +43,11 @@ runs:
         INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
         INPUT_DUMP_VERSION_PATH: ${{ inputs.dump-version-path }}
       run: |
-        chmod +x ./prepare.sh
-        ./prepare.sh ${{inputs.version}} ./.jenkins
+        chmod +x ${{ github.action_path }}/prepare.sh
+        ${{ github.action_path }}/prepare.sh ${{inputs.version}}
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ./.jenkins
-
-    - name: "cleanup"
-      shell: "bash"
-      run: |
-        rm -rf ./.jenkins
+      uses: ${{ github.action_path }}/.jenkins
 
 branding:
   icon: 'server'
