@@ -33,9 +33,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
-      with:
-        path: action-jenkins
     - name: "Prepare files"
       shell: "bash"
       env:
@@ -45,18 +42,15 @@ runs:
         INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}
         INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
         INPUT_DUMP_VERSION_PATH: ${{ inputs.dump-version-path }}
-      run: |
-        cd action-jenkins
-        chmod +x ./prepare.sh
-        ./prepare.sh ${{inputs.version}} ./.jenkins
+      run: ./prepare.sh ${{inputs.version}} ./.jenkins
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ./action-jenkins/.jenkins
+      uses: ./.jenkins
 
     - name: "cleanup"
       shell: "bash"
       run: |
-        rm -rf ./action-jenkins
+        rm -rf ./.jenkins
 
 branding:
   icon: 'server'
