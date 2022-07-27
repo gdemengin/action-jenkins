@@ -47,7 +47,7 @@ runs:
         ${{ github.action_path }}/prepare.sh ${{inputs.version}}
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ${{ github.action_path }}/.jenkins
+      uses: ./.jenkins
 
 branding:
   icon: 'server'

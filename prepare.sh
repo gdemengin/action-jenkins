@@ -10,7 +10,7 @@ set -e
 
 VERSION=$1
 SOURCE=$(dirname $0)
-TARGET=${SOURCE}/.jenkins
+TARGET=./.jenkins
 
 # prepare folder to build docker container
 # and run it as action
