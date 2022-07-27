@@ -1,54 +1,23 @@
-name: "Jenkins"
-description: "Start a jenkins instance"
+name: 'Hello World'
+description: 'Greet someone'
 inputs:
-  version:
-    description: "The jenkins version to use (default: lts)"
-    required: false
-    default: "lts"
-
-  dump-version-path:
-    description: "path to dump version files (see src/init.groovy.d/version.groovy)"
-    required: false
-
-  # override
-  plugins:
-    description: "plugins to install (format plugin[:version])"
-    required: false
-  init_groovy:
-    description: "folder with groovy script to run in init.groovy.d"
-    required: false
-  entrypoint:
-    description: "entrypoint folder (must contain init.sh with default functions, see src/entrypoint/init.sh)"
-    required: false
-
-
-  # master configuration (see init.groovy.d/10-config-master.groovy)
-  master-num-executors:
-    required: false
-    default: 4
-  master-labels:
-    required: false
-    default: ''
-
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
   using: "composite"
   steps:
-    - run: prepare.sh ${{inputs.version}} ./.jenkins
-      shell: "bash"
-      env:
-        INPUT_PLUGINS: ${{ inputs.plugins }}
-        INPUT_INIT_GROOVY: ${{ inputs.init_groovy }}
-        INPUT_ENTRYPOINT: ${{ inputs.entrypoint }}
-        INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}
-        INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
-        INPUT_DUMP_VERSION_PATH: ${{ inputs.dump-version-path }}
-
-    - name: "run jenkins-${{inputs.version}}"
-      uses: ./.jenkins
-
-    - run: rm -rf ./.jenkins
-      shell: "bash"
-
-branding:
-  icon: 'server'
-  color: red
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash          
+    - run: goodbye.sh
+      shell: bash
