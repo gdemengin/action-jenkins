@@ -33,7 +33,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: "Prepare files"
+    - run: ./prepare.sh ${{inputs.version}} ./.jenkins
       shell: "bash"
       env:
         INPUT_PLUGINS: ${{ inputs.plugins }}
@@ -42,15 +42,12 @@ runs:
         INPUT_MASTER_NUM_EXECUTORS: ${{ inputs.master-num-executors }}
         INPUT_MASTER_LABELS: ${{ inputs.master-labels }}
         INPUT_DUMP_VERSION_PATH: ${{ inputs.dump-version-path }}
-      run: ./prepare.sh ${{inputs.version}} ./.jenkins
 
     - name: "run jenkins-${{inputs.version}}"
       uses: ./.jenkins
 
-    - name: "cleanup"
+    - run: rm -rf ./.jenkins
       shell: "bash"
-      run: |
-        rm -rf ./.jenkins
 
 branding:
   icon: 'server'
