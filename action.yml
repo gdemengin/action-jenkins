@@ -49,10 +49,11 @@ runs:
       run: |
         chmod +x ${{ github.action_path }}/prepare.sh
         [ -e ${{ inputs.build-folder }} ] && echo "ERROR .jenkins already exists"
-        ${{ github.action_path }}/prepare.sh ${{inputs.version}} ${{ inputs.build-folder }}
+        ${{ github.action_path }}/prepare.sh ${{inputs.version}} ${{ inputs.build-folder }}/.jenkins
+        cd ${{ inputs.build-folder }}/.jenkins
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ./${{ inputs.build-folder }}
+      uses: ./.jenkins
 
 branding:
   icon: 'server'
