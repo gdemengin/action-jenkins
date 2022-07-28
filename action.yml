@@ -30,6 +30,10 @@ inputs:
     required: false
     default: ''
 
+  build-folder:
+    required: false
+    default: '.jenkins-build'
+
 runs:
   using: "composite"
   steps:
@@ -44,10 +48,11 @@ runs:
         INPUT_DUMP_VERSION_PATH: ${{ inputs.dump-version-path }}
       run: |
         chmod +x ${{ github.action_path }}/prepare.sh
-        ${{ github.action_path }}/prepare.sh ${{inputs.version}}
+        [ -e ${{ inputs.build-folder }} ] && echo "ERROR .jenkins already exists"
+        ${{ github.action_path }}/prepare.sh ${{inputs.version}} ${{ inputs.build-folder }}
 
     - name: "run jenkins-${{inputs.version}}"
-      uses: ./.jenkins
+      uses: ./${{ inputs.build-folder }}
 
 branding:
   icon: 'server'

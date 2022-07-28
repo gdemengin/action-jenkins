@@ -74,10 +74,10 @@ function stop_jenkins() {
 JENKINS_STARTED=false
 function exit_failure() {
     return_code=$?
-    if [ "${INPUT_KEEPALIVE}" != "true" ] && [ "${JENKINS_STARTED}" == "true"]; then
+    if [ "${INPUT_KEEPALIVE}" != "true" ] && [ "${JENKINS_STARTED}" == "true" ]; then
         echo "$1 FAILED with code ${return_code}: stop jenkins and exit" >> /stdout 2>&1
         stop_jenkins >> /stdout 2>&1
-    elif [ "${JENKINS_STARTED}" == "true"]; then
+    elif [ "${JENKINS_STARTED}" == "true" ]; then
         echo "$1 FAILED with code ${return_code}" >> /stdout 2>&1
     fi
 

@@ -2,15 +2,15 @@
 
 set -e
 
-[ $# -eq 1 ] || {
+[ $# -eq 2 ] || {
     echo "ERROR wrong numbre of parameters"
-    echo "usage: $0 <jenkins version>"
+    echo "usage: $0 <jenkins version> <target>"
     exit 1
 }
 
 VERSION=$1
 SOURCE=$(dirname $0)
-TARGET=./.jenkins
+TARGET=./$2
 
 # prepare folder to build docker container
 # and run it as action

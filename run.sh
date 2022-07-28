@@ -17,6 +17,7 @@ function usage() {
     echo "  --entrypoint <entrypoint folder>"
 }
 
+BUILD_FOLDER=.jenkins
 DOCKER_RUN_ARG=
 DOCKER_BUILD_ARG=
 VERSION=lts
@@ -29,6 +30,7 @@ while [ $# -gt 0 ]; do
         --dump-version-path) export INPUT_DUMP_VERSION_PATH="\${GITHUB_WORKSPACE}/$2"; shift 2 ;;
         --keepalive) export INPUT_KEEPALIVE=true; shift ;;
         --standalone) export INPUT_STANDALONE=true; shift ;;
+        --temp-build-folder) BUILD_FOLDER=$2; shift 2;;
         --workspace) WORKSPACE="$2"; shift 2;;
         --no-cache) DOCKER_BUILD_ARG="--pull --no-cache"; shift;;
         --docker-run-arg) DOCKER_RUN_ARG="$2"; shift 2;;
@@ -41,10 +43,10 @@ while [ $# -gt 0 ]; do
 done
 
 WORKDIR=$(dirname $0)
-${WORKDIR}/prepare.sh ${VERSION}
+${WORKDIR}/prepare.sh ${VERSION} ${BUILD_FOLDER}
 
 IMAGE_NAME=jenkins-${VERSION}
-docker build ${DOCKER_BUILD_ARG} -t ${IMAGE_NAME} ${WORKDIR}/.jenkins/.
+docker build ${DOCKER_BUILD_ARG} -t ${IMAGE_NAME} ${BUILD_FOLDER}
 
 set -x
 
