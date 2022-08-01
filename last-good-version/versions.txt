@@ -3,14 +3,14 @@ Plugins :
 	JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor) v1.1
 	Ant Plugin (ant) v475.vf34069fef73c
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v2.7
-	Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api) v4.5.13-1.0
+	Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api) v4.5.13-138.v4e7d9a_7b_a_e61
 	Bootstrap 5 API Plugin (bootstrap5-api) v5.1.3-7
 	bouncycastle API Plugin (bouncycastle-api) v2.25
 	Branch API Plugin (branch-api) v2.1046.v0ca_37783ecc5
 	Build Timeout (build-timeout) v1.21
 	Caffeine API Plugin (caffeine-api) v2.9.3-65.v6a_47d0f4d1fe
 	Checks API plugin (checks-api) v1.7.4
-	Folders Plugin (cloudbees-folder) v6.729.v2b_9d1a_74d673
+	Folders Plugin (cloudbees-folder) v6.740.ve4f4ffa_dea_54
 	Command Agent Launcher Plugin (command-launcher) v1.2
 	Credentials Plugin (credentials) v1139.veb_9579fca_33b_
 	Credentials Binding Plugin (credentials-binding) v523.vd859a_4b_122e6
@@ -19,9 +19,9 @@ Plugins :
 	ECharts API Plugin (echarts-api) v5.3.3-1
 	Email Extension Plugin (email-ext) v2.91
 	Font Awesome API Plugin (font-awesome-api) v6.1.1-1
-	Git plugin (git) v4.11.3
-	Git client plugin (git-client) v3.11.0
-	GitHub plugin (github) v1.34.4
+	Git plugin (git) v4.11.4
+	Git client plugin (git-client) v3.11.1
+	GitHub plugin (github) v1.34.5
 	GitHub API Plugin (github-api) v1.303-400.v35c2d8258028
 	GitHub Branch Source Plugin (github-branch-source) v1677.v731f745ea_0cf
 	Gradle Plugin (gradle) v1.39.4
@@ -37,7 +37,7 @@ Plugins :
 	JQuery3 API Plugin (jquery3-api) v3.6.0-4
 	JSch dependency plugin (jsch) v0.1.55.2
 	JUnit Plugin (junit) v1119.1121.vc43d0fc45561
-	LDAP Plugin (ldap) v2.10
+	LDAP Plugin (ldap) v2.11
 	Mailer Plugin (mailer) v435.v79ef3972b_5c7
 	Matrix Authorization Strategy Plugin (matrix-auth) v3.1.5
 	Matrix Project Plugin (matrix-project) v772.v494f19991984
@@ -47,7 +47,7 @@ Plugins :
 	Pipeline: Build Step (pipeline-build-step) v2.18
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v38.v445716ea_edda_
 	Pipeline Graph Analysis Plugin (pipeline-graph-analysis) v195.v5812d95a_a_2f9
-	Pipeline: Groovy Libraries (pipeline-groovy-lib) v598.vcd66b_a_336510
+	Pipeline: Groovy Libraries (pipeline-groovy-lib) v612.v84da_9c54906d
 	Pipeline: Input Step (pipeline-input-step) v449.v77f0e8b_845c4
 	Pipeline: Milestone Step (pipeline-milestone-step) v101.vd572fef9d926
 	Pipeline: Model API (pipeline-model-api) v2.2114.v2654ca_721309
@@ -57,11 +57,11 @@ Plugins :
 	Pipeline: Stage Step (pipeline-stage-step) v293.v200037eefcd5
 	Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata) v2.2114.v2654ca_721309
 	Pipeline: Stage View Plugin (pipeline-stage-view) v2.24
-	Plain Credentials Plugin (plain-credentials) v1.8
+	Plain Credentials Plugin (plain-credentials) v139.ved2b_9cf7587b
 	Plugin Utilities API Plugin (plugin-util-api) v2.17.0
 	Popper.js 2 API Plugin (popper2-api) v2.11.5-2
 	Resource Disposer Plugin (resource-disposer) v0.19
-	SCM API Plugin (scm-api) v616.ve67136f6c77d
+	SCM API Plugin (scm-api) v620.v0a_5b_1f8054c0
 	Script Security Plugin (script-security) v1175.v4b_d517d6db_f0
 	SnakeYAML API Plugin (snakeyaml-api) v1.30.2-76.vc104f7ce9870
 	SSH Credentials Plugin (ssh-credentials) v295.vced876c18eb_4
@@ -71,10 +71,10 @@ Plugins :
 	Timestamper (timestamper) v1.18
 	Token Macro Plugin (token-macro) v308.v4f2b_ed62b_b_16
 	Trilead API Plugin (trilead-api) v1.67.vc3938a_35172f
-	Variant Plugin (variant) v1.4
+	Variant Plugin (variant) v59.vf075fe829ccb
 	Pipeline (workflow-aggregator) v590.v6a_d052e5a_a_b_5
 	Pipeline: API (workflow-api) v1188.v0016b_4f29881
-	Pipeline: Basic Steps (workflow-basic-steps) v980.v82219a_ed188e
+	Pipeline: Basic Steps (workflow-basic-steps) v986.v6b_9c830a_6b_37
 	Pipeline: Groovy (workflow-cps) v2759.v87459c4eea_ca_
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1199.v02b_9244f8064
 	Pipeline: Job (workflow-job) v1207.ve6191ff089f8
