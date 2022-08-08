@@ -20,29 +20,29 @@ Plugins :
 	Email Extension Plugin (email-ext) v2.91
 	Font Awesome API Plugin (font-awesome-api) v6.1.1-1
 	Git plugin (git) v4.11.4
-	Git client plugin (git-client) v3.11.1
+	Git client plugin (git-client) v3.11.2
 	GitHub plugin (github) v1.34.5
 	GitHub API Plugin (github-api) v1.303-400.v35c2d8258028
 	GitHub Branch Source Plugin (github-branch-source) v1677.v731f745ea_0cf
 	Gradle Plugin (gradle) v1.39.4
 	JavaScript GUI Lib: Handlebars bundle plugin (handlebars) v3.0.8
 	Jackson 2 API Plugin (jackson2-api) v2.13.3-285.vc03c0256d517
-	Jakarta Activation API (jakarta-activation-api) v2.0.0-3
-	Jakarta Mail API (jakarta-mail-api) v2.0.0-6
+	Jakarta Activation API (jakarta-activation-api) v2.0.1-1
+	Jakarta Mail API (jakarta-mail-api) v2.0.1-1
 	JavaBeans Activation Framework (JAF) API (javax-activation-api) v1.2.0-4
 	JavaMail API (javax-mail-api) v1.6.2-5
 	JAXB plugin (jaxb) v2.3.6-1
 	JDK Tool Plugin (jdk-tool) v1.0
 	Java JSON Web Token (JJWT) Plugin (jjwt-api) v0.11.5-77.v646c772fddb_0
 	JQuery3 API Plugin (jquery3-api) v3.6.0-4
-	JSch dependency plugin (jsch) v0.1.55.2
+	JSch dependency plugin (jsch) v0.1.55.61.va_e9ee26616e7
 	JUnit Plugin (junit) v1119.1121.vc43d0fc45561
 	LDAP Plugin (ldap) v2.11
 	Mailer Plugin (mailer) v435.v79ef3972b_5c7
 	Matrix Authorization Strategy Plugin (matrix-auth) v3.1.5
 	Matrix Project Plugin (matrix-project) v772.v494f19991984
 	JavaScript GUI Lib: Moment.js bundle plugin (momentjs) v1.1.1
-	OkHttp Plugin (okhttp-api) v4.9.3-105.vb96869f8ac3a
+	OkHttp Plugin (okhttp-api) v4.9.3-108.v0feda04578cf
 	PAM Authentication plugin (pam-auth) v1.8
 	Pipeline: Build Step (pipeline-build-step) v2.18
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v38.v445716ea_edda_
@@ -81,5 +81,5 @@ Plugins :
 	Pipeline: Multibranch (workflow-multibranch) v716.vc692a_e52371b_
 	Pipeline: SCM Step (workflow-scm-step) v400.v6b_89a_1317c9a_
 	Pipeline: Step API (workflow-step-api) v639.v6eca_cd8c04a_a_
-	Pipeline: Supporting APIs (workflow-support) v833.va_1c71061486b_
+	Pipeline: Supporting APIs (workflow-support) v838.va_3a_087b_4055b
 	Workspace Cleanup Plugin (ws-cleanup) v0.42
