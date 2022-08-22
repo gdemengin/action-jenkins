@@ -4,7 +4,7 @@ Plugins :
 	Ant Plugin (ant) v475.vf34069fef73c
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v2.7
 	Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api) v4.5.13-138.v4e7d9a_7b_a_e61
-	Bootstrap 5 API Plugin (bootstrap5-api) v5.2.0-1
+	Bootstrap 5 API Plugin (bootstrap5-api) v5.2.0-2
 	bouncycastle API Plugin (bouncycastle-api) v2.25
 	Branch API Plugin (branch-api) v2.1046.v0ca_37783ecc5
 	Build Timeout (build-timeout) v1.21
@@ -37,7 +37,7 @@ Plugins :
 	JQuery3 API Plugin (jquery3-api) v3.6.0-4
 	JSch dependency plugin (jsch) v0.1.55.61.va_e9ee26616e7
 	JUnit Plugin (junit) v1119.1121.vc43d0fc45561
-	LDAP Plugin (ldap) v2.11
+	LDAP Plugin (ldap) v2.12
 	Mailer Plugin (mailer) v435.v79ef3972b_5c7
 	Matrix Authorization Strategy Plugin (matrix-auth) v3.1.5
 	Matrix Project Plugin (matrix-project) v772.v494f19991984
@@ -59,7 +59,7 @@ Plugins :
 	Pipeline: Stage View Plugin (pipeline-stage-view) v2.24
 	Plain Credentials Plugin (plain-credentials) v139.ved2b_9cf7587b
 	Plugin Utilities API Plugin (plugin-util-api) v2.17.0
-	Popper.js 2 API Plugin (popper2-api) v2.11.5-2
+	Popper.js 2 API Plugin (popper2-api) v2.11.6-1
 	Resource Disposer Plugin (resource-disposer) v0.19
 	SCM API Plugin (scm-api) v621.vda_a_b_055e58f7
 	Script Security Plugin (script-security) v1175.v4b_d517d6db_f0
