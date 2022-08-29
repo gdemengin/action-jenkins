@@ -4,10 +4,10 @@ Plugins :
 	Ant Plugin (ant) v475.vf34069fef73c
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v2.7
 	Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api) v4.5.13-138.v4e7d9a_7b_a_e61
-	Bootstrap 5 API Plugin (bootstrap5-api) v5.2.0-2
+	Bootstrap 5 API Plugin (bootstrap5-api) v5.2.0-3
 	bouncycastle API Plugin (bouncycastle-api) v2.25
 	Branch API Plugin (branch-api) v2.1046.v0ca_37783ecc5
-	Build Timeout (build-timeout) v1.21
+	Build Timeout (build-timeout) v1.23
 	Caffeine API Plugin (caffeine-api) v2.9.3-65.v6a_47d0f4d1fe
 	Checks API plugin (checks-api) v1.7.5
 	Folders Plugin (cloudbees-folder) v6.740.ve4f4ffa_dea_54
@@ -19,11 +19,11 @@ Plugins :
 	ECharts API Plugin (echarts-api) v5.3.3-1
 	Email Extension Plugin (email-ext) v2.91
 	Font Awesome API Plugin (font-awesome-api) v6.1.2-1
-	Git plugin (git) v4.11.4
+	Git plugin (git) v4.11.5
 	Git client plugin (git-client) v3.11.2
 	GitHub plugin (github) v1.34.5
 	GitHub API Plugin (github-api) v1.303-400.v35c2d8258028
-	GitHub Branch Source Plugin (github-branch-source) v1677.v731f745ea_0cf
+	GitHub Branch Source Plugin (github-branch-source) v1687.v7618247e672d
 	Gradle Plugin (gradle) v1.39.4
 	JavaScript GUI Lib: Handlebars bundle plugin (handlebars) v3.0.8
 	Jackson 2 API Plugin (jackson2-api) v2.13.3-285.vc03c0256d517
@@ -54,7 +54,7 @@ Plugins :
 	Pipeline: Declarative (pipeline-model-definition) v2.2114.v2654ca_721309
 	Pipeline: Declarative Extension Points API (pipeline-model-extensions) v2.2114.v2654ca_721309
 	Pipeline: REST API Plugin (pipeline-rest-api) v2.24
-	Pipeline: Stage Step (pipeline-stage-step) v293.v200037eefcd5
+	Pipeline: Stage Step (pipeline-stage-step) v296.v5f6908f017a_5
 	Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata) v2.2114.v2654ca_721309
 	Pipeline: Stage View Plugin (pipeline-stage-view) v2.24
 	Plain Credentials Plugin (plain-credentials) v139.ved2b_9cf7587b
