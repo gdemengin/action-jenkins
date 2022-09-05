@@ -7,12 +7,12 @@ Plugins :
 	Bootstrap 5 API Plugin (bootstrap5-api) v5.2.0-3
 	bouncycastle API Plugin (bouncycastle-api) v2.25
 	Branch API Plugin (branch-api) v2.1046.v0ca_37783ecc5
-	Build Timeout (build-timeout) v1.23
+	Build Timeout (build-timeout) v1.24
 	Caffeine API Plugin (caffeine-api) v2.9.3-65.v6a_47d0f4d1fe
 	Checks API plugin (checks-api) v1.7.5
 	Folders Plugin (cloudbees-folder) v6.740.ve4f4ffa_dea_54
 	Command Agent Launcher Plugin (command-launcher) v1.2
-	Credentials Plugin (credentials) v1139.veb_9579fca_33b_
+	Credentials Plugin (credentials) v1143.vb_e8b_b_ceee347
 	Credentials Binding Plugin (credentials-binding) v523.vd859a_4b_122e6
 	Display URL API (display-url-api) v2.3.6
 	Durable Task Plugin (durable-task) v500.v8927d9fd99d8
@@ -60,21 +60,21 @@ Plugins :
 	Plain Credentials Plugin (plain-credentials) v139.ved2b_9cf7587b
 	Plugin Utilities API Plugin (plugin-util-api) v2.17.0
 	Popper.js 2 API Plugin (popper2-api) v2.11.6-1
-	Resource Disposer Plugin (resource-disposer) v0.19
+	Resource Disposer Plugin (resource-disposer) v0.20
 	SCM API Plugin (scm-api) v621.vda_a_b_055e58f7
 	Script Security Plugin (script-security) v1175.v4b_d517d6db_f0
-	SnakeYAML API Plugin (snakeyaml-api) v1.30.2-76.vc104f7ce9870
-	SSH Credentials Plugin (ssh-credentials) v295.vced876c18eb_4
+	SnakeYAML API Plugin (snakeyaml-api) v1.31-84.ve43da_fb_49d0b
+	SSH Credentials Plugin (ssh-credentials) v305.v8f4381501156
 	SSH Build Agents plugin (ssh-slaves) v1.834.v622da_57f702c
 	SSH server (sshd) v3.0.3
 	Structs Plugin (structs) v324.va_f5d6774f3a_d
-	Timestamper (timestamper) v1.18
+	Timestamper (timestamper) v1.19
 	Token Macro Plugin (token-macro) v308.v4f2b_ed62b_b_16
 	Trilead API Plugin (trilead-api) v1.67.vc3938a_35172f
 	Variant Plugin (variant) v59.vf075fe829ccb
 	Pipeline (workflow-aggregator) v590.v6a_d052e5a_a_b_5
 	Pipeline: API (workflow-api) v1192.v2d0deb_19d212
-	Pipeline: Basic Steps (workflow-basic-steps) v991.v43d80fea_ff66
+	Pipeline: Basic Steps (workflow-basic-steps) v994.vd57e3ca_46d24
 	Pipeline: Groovy (workflow-cps) v2759.v87459c4eea_ca_
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1199.v02b_9244f8064
 	Pipeline: Job (workflow-job) v1207.ve6191ff089f8
@@ -82,4 +82,4 @@ Plugins :
 	Pipeline: SCM Step (workflow-scm-step) v400.v6b_89a_1317c9a_
 	Pipeline: Step API (workflow-step-api) v639.v6eca_cd8c04a_a_
 	Pipeline: Supporting APIs (workflow-support) v838.va_3a_087b_4055b
-	Workspace Cleanup Plugin (ws-cleanup) v0.42
+	Workspace Cleanup Plugin (ws-cleanup) v0.43
