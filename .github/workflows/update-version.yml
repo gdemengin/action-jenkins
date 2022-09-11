@@ -3,7 +3,7 @@ name: bump last-good-version
 on:
   schedule:
     # once a week to check with latest version of plugins
-    - cron:  '0 19 * * 1'
+    - cron:  '0 19 * * *'
   workflow_dispatch:
 
 jobs:
@@ -31,8 +31,30 @@ jobs:
           version: last-good-version
 
       - name: auto commit version update
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v4.14.1
         with:
           commit_message: "[bot] Update last good version"
           file_pattern: last-good-version README.md src/plugins.txt
+          branch: create-pull-request/update-version
+          create_branch: true
+
+      - name: auto commit version update
+        if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v4.14.1
+        with:
+          commit_message: "[bot] Update last good version"
+          file_pattern: last-good-version README.md src/plugins.txt
+
+      - name: remove temp files
+        run: |
+          git status
+          test $(git status --porcelain | wc -l) == 0
+
+      - name: Create Pull Request
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v4
+        with:
+          base: create-pull-request/update-version
+          branch: create-pull-request/update-version
+          delete-branch: true
