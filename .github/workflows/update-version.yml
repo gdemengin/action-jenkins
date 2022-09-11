@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: test on jenkins-lts
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.0.2
 
       - name: test jenkins-lts
         uses: ./
@@ -25,34 +25,35 @@ jobs:
           chmod +x update_version.sh
           ./update_version.sh last-good-version
 
-      - name: double check jenkins last good version
+      - name: test new good version before commit
         uses: ./
         with:
           version: last-good-version
 
-      - name: prepare branch for Pull Request
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@v4.14.1
-        with:
-          commit_message: "[bot] Update last good version"
-          file_pattern: last-good-version README.md src/plugins.txt
-          branch: create-pull-request/update-version
-          create_branch: true
-          push_options: '--force'
+#      - name: prepare branch for Pull Request
+#        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+#        uses: stefanzweifel/git-auto-commit-action@v4.14.1
+#        with:
+#          commit_message: "[bot] Update last good version"
+#          file_pattern: last-good-version README.md src/plugins.txt
+#          branch: create-pull-request/update-version
+#          create_branch: true
+#          push_options: '--force'
 
-      - name: auto commit version update
+      - name: auto commit version update (for non-default branches)
         if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v4.14.1
         with:
           commit_message: "[bot] Update last good version"
           file_pattern: last-good-version README.md src/plugins.txt
 
-      - name: Create Pull Request
+      - name: Create Pull Request (for main branch)
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v4.1.1
         with:
           branch: create-pull-request/update-version
-          #add-paths: last-good-version, README.md, src/plugins.txt
-          #commit-message: "[bot] Update last good version"
-          title: "[bot] Update last good version"
+          add-paths: last-good-version, README.md, src/plugins.txt
+          commit-message: "[bot] Update last good version"
+          title: "Update last good version"
           delete-branch: true
+          commiter: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
