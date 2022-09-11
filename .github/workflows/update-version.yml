@@ -30,15 +30,15 @@ jobs:
         with:
           version: last-good-version
 
-#      - name: auto commit version update
-#        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-#        uses: stefanzweifel/git-auto-commit-action@v4.14.1
-#        with:
-#          commit_message: "[bot] Update last good version"
-#          file_pattern: last-good-version README.md src/plugins.txt
-#          branch: create-pull-request/update-version
-#          create_branch: true
-#          push_options: '--force'
+      - name: prepare branch for Pull Request
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v4.14.1
+        with:
+          commit_message: "[bot] Update last good version"
+          file_pattern: last-good-version README.md src/plugins.txt
+          branch: create-pull-request/update-version
+          create_branch: true
+          push_options: '--force'
 
       - name: auto commit version update
         if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
@@ -47,18 +47,12 @@ jobs:
           commit_message: "[bot] Update last good version"
           file_pattern: last-good-version README.md src/plugins.txt
 
-      - name: test
-        run: |
-          pwd
-          ls -l
-          ls -l last-good-version
-
       - name: Create Pull Request
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: peter-evans/create-pull-request@v4
         with:
           branch: create-pull-request/update-version
-          add-paths: last-good-version, README.md, src/plugins.txt
-          commit-message: "[bot] Update last good version"
+          #add-paths: last-good-version, README.md, src/plugins.txt
+          #commit-message: "[bot] Update last good version"
           title: "[bot] Update last good version"
           delete-branch: true
