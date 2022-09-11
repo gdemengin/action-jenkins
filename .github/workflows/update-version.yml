@@ -44,6 +44,13 @@ jobs:
         uses: peter-evans/create-pull-request@v4.1.1
         with:
           title: "Update last good version"
+          body: "
+            Automated changes by [create-pull-request]\
+              (https://github.com/peter-evans/create-pull-request) GitHub action\n
+            Close and reopen PR to trigger status check tests, cf \
+              [triggering-further-workflow-runs]\
+              (https://github.com/peter-evans/create-pull-request/blob/main/\
+              docs/concepts-guidelines.md#triggering-further-workflow-runs)"
           commit-message: "[bot] Update last good version"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           add-paths: last-good-version, README.md, src/plugins.txt
