@@ -7,13 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  jenkins-lts:
+  update-version:
     runs-on: ubuntu-latest
-    name: test on jenkins-lts
+    name: update version
     steps:
       - uses: actions/checkout@v3.0.2
 
-      - name: test jenkins-lts
+      - name: test jenkins-lts to get version
         uses: ./
         with:
           dump-version-path: ${GITHUB_WORKSPACE}/.version
@@ -25,20 +25,10 @@ jobs:
           chmod +x update_version.sh
           ./update_version.sh last-good-version
 
-      - name: test new good version before commit
+      - name: double check new last-good-version before commit
         uses: ./
         with:
           version: last-good-version
-
-#      - name: prepare branch for Pull Request
-#        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-#        uses: stefanzweifel/git-auto-commit-action@v4.14.1
-#        with:
-#          commit_message: "[bot] Update last good version"
-#          file_pattern: last-good-version README.md src/plugins.txt
-#          branch: create-pull-request/update-version
-#          create_branch: true
-#          push_options: '--force'
 
       - name: auto commit version update (for non-default branches)
         if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
@@ -56,4 +46,4 @@ jobs:
           commit-message: "[bot] Update last good version"
           title: "Update last good version"
           delete-branch: true
-          commiter: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
