@@ -47,6 +47,12 @@ jobs:
           commit_message: "[bot] Update last good version"
           file_pattern: last-good-version README.md src/plugins.txt
 
+      - name: test
+        run: |
+          pwd
+          ls -l
+          ls -l ..
+
       - name: Create Pull Request
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: peter-evans/create-pull-request@v4
