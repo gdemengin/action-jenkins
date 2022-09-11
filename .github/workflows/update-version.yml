@@ -55,6 +55,6 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: peter-evans/create-pull-request@v4
         with:
-          base: create-pull-request/update-version
+          base: main
           branch: create-pull-request/update-version
           delete-branch: true
