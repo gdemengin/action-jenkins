@@ -21,7 +21,7 @@ jobs:
       - name: update version
         run: |
           rm -rf last-good-version
-          mv .version last-good-version
+          cp -r .version last-good-version
           chmod +x update_version.sh
           ./update_version.sh last-good-version
 
@@ -51,7 +51,7 @@ jobs:
         run: |
           pwd
           ls -l
-          ls -l ..
+          ls -l last-good-version
 
       - name: Create Pull Request
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
