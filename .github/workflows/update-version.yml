@@ -38,6 +38,7 @@ jobs:
           file_pattern: last-good-version README.md src/plugins.txt
           branch: create-pull-request/update-version
           create_branch: true
+          push_options: '--force'
 
       - name: auto commit version update
         if: github.event_name != 'pull_request' && github.ref != 'refs/heads/main'
