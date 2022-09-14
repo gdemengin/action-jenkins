@@ -1,8 +1,10 @@
-name: bump last-good-version
+# update version of jenkins plugins
+# daily (pull-request with branch update-version)
+
+name: update last-good-version
 
 on:
   schedule:
-    # once a week to check with latest version of plugins
     - cron:  '0 19 * * *'
   workflow_dispatch:
 
@@ -18,12 +20,12 @@ jobs:
         with:
           dump-version-path: ${GITHUB_WORKSPACE}/.version
 
-      - name: update version
+      - name: update last-good-version
         run: |
-          rm -rf last-good-version
-          cp -r .version last-good-version
           chmod +x update_version.sh
-          ./update_version.sh last-good-version
+          ./update_version.sh .version
+          git status
+          git diff
 
       - name: double check new last-good-version before commit
         uses: ./
@@ -41,9 +43,9 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: peter-evans/create-pull-request@v4.1.1
         with:
-          branch: create-pull-request/update-version
-          add-paths: last-good-version, README.md, src/plugins.txt
-          commit-message: "[bot] Update last good version"
           title: "Update last good version"
-          delete-branch: true
+          commit-message: "[bot] Update last good version"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          add-paths: last-good-version, README.md, src/plugins.txt
+          branch: create-pull-request/update-version
+          delete-branch: true
