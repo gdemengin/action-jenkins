@@ -1,4 +1,4 @@
-Jenkins Instance Version : 2.361.4
+Jenkins Instance Version : 2.375.1
 Plugins : 
 	JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor) v1.1
 	Ant Plugin (ant) v481.v7b_09e538fcca
@@ -10,24 +10,24 @@ Plugins :
 	Build Timeout (build-timeout) v1.25
 	Caffeine API Plugin (caffeine-api) v2.9.3-65.v6a_47d0f4d1fe
 	Checks API plugin (checks-api) v1.8.0
-	Folders Plugin (cloudbees-folder) v6.758.vfd75d09eea_a_1
+	Folders Plugin (cloudbees-folder) v6.800.v71307ca_b_986b
 	Command Agent Launcher Plugin (command-launcher) v1.2
 	commons-lang3 v3.x Jenkins API Plugin (commons-lang3-api) v3.12.0-36.vd97de6465d5b_
 	commons-text API Plugin (commons-text-api) v1.10.0-27.vb_fa_3896786a_7
-	Credentials Plugin (credentials) v1189.vf61b_a_5e2f62e
+	Credentials Plugin (credentials) v1214.v1de940103927
 	Credentials Binding Plugin (credentials-binding) v523.vd859a_4b_122e6
 	Display URL API (display-url-api) v2.3.6
-	Durable Task Plugin (durable-task) v501.ve5d4fc08b0be
+	Durable Task Plugin (durable-task) v503.v57154d18d478
 	ECharts API Plugin (echarts-api) v5.4.0-1
 	Email Extension Plugin (email-ext) v2.92
 	Font Awesome API Plugin (font-awesome-api) v6.2.1-1
 	Git plugin (git) v4.14.1
-	Git client plugin (git-client) v3.13.0
+	Git client plugin (git-client) v3.13.1
 	GitHub plugin (github) v1.36.0
 	GitHub API Plugin (github-api) v1.303-400.v35c2d8258028
 	GitHub Branch Source Plugin (github-branch-source) v1696.v3a_7603564d04
 	Gradle Plugin (gradle) v2.1.1
-	Instance Identity (instance-identity) v116.vf8f487400980
+	Instance Identity (instance-identity) v142.v04572ca_5b_265
 	Ionicons API (ionicons-api) v31.v4757b_6987003
 	Jackson 2 API Plugin (jackson2-api) v2.14.1-313.v504cdd45c18b
 	Jakarta Activation API (jakarta-activation-api) v2.0.1-2
@@ -61,7 +61,7 @@ Plugins :
 	Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata) v2.2118.v31fd5b_9944b_5
 	Pipeline: Stage View Plugin (pipeline-stage-view) v2.28
 	Plain Credentials Plugin (plain-credentials) v139.ved2b_9cf7587b
-	Plugin Utilities API Plugin (plugin-util-api) v2.18.0
+	Plugin Utilities API Plugin (plugin-util-api) v2.20.0
 	Popper.js 2 API Plugin (popper2-api) v2.11.6-2
 	Resource Disposer Plugin (resource-disposer) v0.20
 	SCM API Plugin (scm-api) v621.vda_a_b_055e58f7
@@ -78,7 +78,7 @@ Plugins :
 	Pipeline (workflow-aggregator) v590.v6a_d052e5a_a_b_5
 	Pipeline: API (workflow-api) v1200.v8005c684b_a_c6
 	Pipeline: Basic Steps (workflow-basic-steps) v994.vd57e3ca_46d24
-	Pipeline: Groovy (workflow-cps) v3536.vb_8a_6628079d5
+	Pipeline: Groovy (workflow-cps) v3565.v4b_d9b_8c29a_b_3
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1217.v38306d8fa_b_5c
 	Pipeline: Job (workflow-job) v1254.v3f64639b_11dd
 	Pipeline: Multibranch (workflow-multibranch) v716.vc692a_e52371b_
