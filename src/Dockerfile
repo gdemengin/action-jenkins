@@ -2,6 +2,16 @@ FROM jenkins/jenkins:lts
 
 USER root
 
+# patch sources.list for old debian versions
+# https://stackoverflow.com/questions/76094428/debian-stretch-repositories-404-not-found
+RUN \
+    if [ $(cat /etc/apt/sources.list | grep stretch-updates | wc -l) != 0 ]; then \
+        sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list; \
+        sed -i 's|security.debian.org|archive.debian.org/debian-security/|g' /etc/apt/sources.list; \
+        sed -i '/stretch\/updates/d' /etc/apt/sources.list; \
+        sed -i '/stretch-updates/d' /etc/apt/sources.list; \
+    fi
+
 # install prerequisite debian packages
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
