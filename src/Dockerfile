@@ -29,10 +29,11 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # remove expired certificates (required to get plugins on old versions)
-RUN grep X3 /etc/ca-certificates.conf \
- && grep X1 /etc/ca-certificates.conf \
- && sed -i '/^mozilla\/DST_Root_CA_X3/s/^/!/' /etc/ca-certificates.conf \
- && update-ca-certificates -f
+RUN \
+    if [ $(grep X3 /etc/ca-certificates.conf | wc -l) != 0 ]; then \
+        sed -i '/^mozilla\/DST_Root_CA_X3/s/^/!/' /etc/ca-certificates.conf; \
+        update-ca-certificates -f; \
+    fi
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 # use jenkins-plugin-cli when present, otherwise fallback to old install-plugins.sh
