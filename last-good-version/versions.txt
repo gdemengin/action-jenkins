@@ -74,7 +74,7 @@ Plugins :
 	Pipeline: API (workflow-api) v1259.vb_47f14fffc8a_
 	Pipeline: Basic Steps (workflow-basic-steps) v1042.ve7b_140c4a_e0c
 	Pipeline: Groovy (workflow-cps) v3769.v8b_e595e4d40d
-	Pipeline: Nodes and Processes (workflow-durable-task-step) v1284.v4fcd365b_75b_e
+	Pipeline: Nodes and Processes (workflow-durable-task-step) v1289.v4d3e7b_01546b_
 	Pipeline: Job (workflow-job) v1341.vd9fa_65f771dd
 	Pipeline: Multibranch (workflow-multibranch) v756.v891d88f2cd46
 	Pipeline: SCM Step (workflow-scm-step) v415.v434365564324
