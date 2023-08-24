@@ -21,7 +21,7 @@ BUILD_FOLDER=.jenkins
 DOCKER_RUN_ARG=
 DOCKER_BUILD_ARG=
 VERSION=lts
-WORKSPACE=$(pwd)/..
+WORKSPACE=$(pwd)
 
 while [ $# -gt 0 ]; do
     case "$1" in
