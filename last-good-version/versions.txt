@@ -1,4 +1,4 @@
-Jenkins Instance Version : 2.440.1
+Jenkins Instance Version : 2.440.2
 Plugins : 
 	Ant Plugin (ant) v497.v94e7d9fffa_b_9
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v162.v0e6ec0fcfcf6
@@ -15,6 +15,7 @@ Plugins :
 	commons-text API Plugin (commons-text-api) v1.11.0-95.v22a_d30ee5d36
 	Credentials Plugin (credentials) v1337.v60b_d7b_c7b_c9f
 	Credentials Binding Plugin (credentials-binding) v657.v2b_19db_7d6e6d
+	Dark Theme (dark-theme) v439.vdef09f81f85e
 	Display URL API (display-url-api) v2.200.vb_9327d658781
 	Durable Task Plugin (durable-task) v550.v0930093c4b_a_6
 	ECharts API Plugin (echarts-api) v5.5.0-1
@@ -24,7 +25,7 @@ Plugins :
 	Git client plugin (git-client) v4.7.0
 	GitHub plugin (github) v1.38.0
 	GitHub API Plugin (github-api) v1.318-461.v7a_c09c9fa_d63
-	GitHub Branch Source Plugin (github-branch-source) v1781.va_153cda_09d1b_
+	GitHub Branch Source Plugin (github-branch-source) v1785.v99802b_69816c
 	Gradle Plugin (gradle) v2.10
 	Gson API Plugin (gson-api) v2.10.1-15.v0d99f670e0a_7
 	Instance Identity (instance-identity) v185.v303dc7c645f9
@@ -39,38 +40,39 @@ Plugins :
 	Joda Time API Plugin (joda-time-api) v2.12.7-29.v5a_b_e3a_82269a_
 	JQuery3 API Plugin (jquery3-api) v3.7.1-2
 	JSON Api Plugin (json-api) v20240303-41.v94e11e6de726
-	JSON Path API Plugin (json-path-api) v2.9.0-52.v57de85cc4722
-	JUnit Plugin (junit) v1259.v65ffcef24a_88
-	LDAP Plugin (ldap) v711.vb_d1a_491714dc
+	JSON Path API Plugin (json-path-api) v2.9.0-58.v62e3e85b_a_655
+	JUnit Plugin (junit) v1265.v65b_14fa_f12f0
+	LDAP Plugin (ldap) v719.vcb_d039b_77d0d
 	Mailer Plugin (mailer) v472.vf7c289a_4b_420
 	Matrix Authorization Strategy Plugin (matrix-auth) v3.2.2
 	Matrix Project Plugin (matrix-project) v822.824.v14451b_c0fd42
-	Mina SSHD API :: Common (mina-sshd-api-common) v2.12.0-90.v9f7fb_9fa_3d3b_
-	Mina SSHD API :: Core (mina-sshd-api-core) v2.12.0-90.v9f7fb_9fa_3d3b_
+	Metrics Plugin (metrics) v4.2.21-449.v6960d7c54c69
+	Mina SSHD API :: Common (mina-sshd-api-common) v2.12.0-99.vdb_f07841c2db_
+	Mina SSHD API :: Core (mina-sshd-api-core) v2.12.0-99.vdb_f07841c2db_
 	OkHttp Plugin (okhttp-api) v4.11.0-172.vda_da_1feeb_c6e
 	PAM Authentication plugin (pam-auth) v1.10
 	Pipeline: Build Step (pipeline-build-step) v540.vb_e8849e1a_b_d8
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v42.v0739460cda_c4
 	Pipeline Graph Analysis Plugin (pipeline-graph-analysis) v216.vfd8b_ece330ca_
+	Pipeline Graph View Plugin (pipeline-graph-view) v234.v984087d1eb_25
 	Pipeline: Groovy Libraries (pipeline-groovy-lib) v704.vc58b_8890a_384
 	Pipeline: Input Step (pipeline-input-step) v491.vb_07d21da_1a_fb_
 	Pipeline: Milestone Step (pipeline-milestone-step) v111.v449306f708b_7
 	Pipeline: Model API (pipeline-model-api) v2.2184.v0b_358b_953e69
 	Pipeline: Declarative (pipeline-model-definition) v2.2184.v0b_358b_953e69
 	Pipeline: Declarative Extension Points API (pipeline-model-extensions) v2.2184.v0b_358b_953e69
-	Pipeline: REST API Plugin (pipeline-rest-api) v2.34
 	Pipeline: Stage Step (pipeline-stage-step) v305.ve96d0205c1c6
 	Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata) v2.2184.v0b_358b_953e69
-	Pipeline: Stage View Plugin (pipeline-stage-view) v2.34
 	Plain Credentials Plugin (plain-credentials) v179.vc5cb_98f6db_38
 	Plugin Utilities API Plugin (plugin-util-api) v4.1.0
 	Resource Disposer Plugin (resource-disposer) v0.23
 	SCM API Plugin (scm-api) v689.v237b_6d3a_ef7f
 	Script Security Plugin (script-security) v1326.vdb_c154de8669
 	SnakeYAML API Plugin (snakeyaml-api) v2.2-111.vc6598e30cc65
-	SSH Credentials Plugin (ssh-credentials) v326.v7fcb_a_ef6194b_
+	SSH Credentials Plugin (ssh-credentials) v334.v7732563deee1
 	SSH Build Agents plugin (ssh-slaves) v2.948.vb_8050d697fec
 	Structs Plugin (structs) v337.v1b_04ea_4df7c8
+	Theme Manager (theme-manager) v215.vc1ff18d67920
 	Timestamper (timestamper) v1.26
 	Token Macro Plugin (token-macro) v400.v35420b_922dcb_
 	Trilead API Plugin (trilead-api) v2.142.v748523a_76693
@@ -78,7 +80,7 @@ Plugins :
 	Pipeline (workflow-aggregator) v596.v8c21c963d92d
 	Pipeline: API (workflow-api) v1291.v51fd2a_625da_7
 	Pipeline: Basic Steps (workflow-basic-steps) v1049.v257a_e6b_30fb_d
-	Pipeline: Groovy (workflow-cps) v3883.vb_3ff2a_e3eea_f
+	Pipeline: Groovy (workflow-cps) v3889.v937e0b_3412d3
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1331.vc8c2fed35334
 	Pipeline: Job (workflow-job) v1400.v7fd111b_ec82f
 	Pipeline: Multibranch (workflow-multibranch) v773.vc4fe1378f1d5
