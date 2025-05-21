@@ -14,7 +14,7 @@ RUN \
 
 # install prerequisite debian packages
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --allow-unauthenticated \
      apt-transport-https \
      ca-certificates \
      curl \
