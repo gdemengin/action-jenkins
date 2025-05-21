@@ -13,7 +13,6 @@ gradle
 ldap
 mailer
 matrix-auth
-pam-auth
 pipeline-github-lib
 pipeline-graph-view
 ssh-slaves
