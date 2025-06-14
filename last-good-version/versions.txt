@@ -1,4 +1,4 @@
-Jenkins Instance Version : 2.504.1
+Jenkins Instance Version : 2.504.2
 Plugins : 
 	Ant Plugin (ant) v513.vde9e7b_a_0da_0f
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v173.v680e3a_b_69ff3
@@ -9,8 +9,8 @@ Plugins :
 	Branch API Plugin (branch-api) v2.1217.v43d8b_b_d8b_2c7
 	Build Timeout (build-timeout) v1.38
 	Caffeine API Plugin (caffeine-api) v3.2.0-166.v72a_6d74b_870f
-	Checks API plugin (checks-api) v370.vb_61a_c57328f3
-	Folders Plugin (cloudbees-folder) v6.1012.v79a_86a_1ea_c1f
+	Checks API plugin (checks-api) v373.vfe7645102093
+	Folders Plugin (cloudbees-folder) v6.1023.v4fcb_72152519
 	commons-lang3 v3.x Jenkins API Plugin (commons-lang3-api) v3.17.0-87.v5cf526e63b_8b_
 	commons-text API Plugin (commons-text-api) v1.13.1-176.v74d88f22034b_
 	Credentials Plugin (credentials) v1415.v831096eb_5534
@@ -26,7 +26,7 @@ Plugins :
 	Git client plugin (git-client) v6.1.3
 	GitHub plugin (github) v1.43.0
 	GitHub API Plugin (github-api) v1.321-488.v9b_c0da_9533f8
-	GitHub Branch Source Plugin (github-branch-source) v1815.v9152b_2ff7a_1b_
+	GitHub Branch Source Plugin (github-branch-source) v1822.v9eec8e5e69e3
 	Gradle Plugin (gradle) v2.15
 	Gson API Plugin (gson-api) v2.13.1-139.v4569c2ef303f
 	Instance Identity (instance-identity) v203.v15e81a_1b_7a_38
@@ -39,24 +39,22 @@ Plugins :
 	Java JSON Web Token (JJWT) Plugin (jjwt-api) v0.11.5-120.v0268cf544b_89
 	Joda Time API Plugin (joda-time-api) v2.14.0-127.v7d9da_295a_d51
 	JQuery3 API Plugin (jquery3-api) v3.7.1-3
-	JSON Api Plugin (json-api) v20250107-125.v28b_a_ffa_eb_f01
+	JSON Api Plugin (json-api) v20250517-153.vc8a_a_d87c0ce3
 	JSON Path API Plugin (json-path-api) v2.9.0-148.v22a_7ffe323ce
 	JUnit Plugin (junit) v1335.v6b_a_a_e18534e1
 	LDAP Plugin (ldap) v780.vcb_33c9a_e4332
 	Mailer Plugin (mailer) v489.vd4b_25144138f
 	Matrix Authorization Strategy Plugin (matrix-auth) v3.2.6
 	Matrix Project Plugin (matrix-project) v849.v0cd64ed7e531
-	Metrics Plugin (metrics) v4.2.30-471.v55fa_495f2b_f5
+	Metrics Plugin (metrics) v4.2.32-476.v5042e1c1edd7
 	Mina SSHD API :: Common (mina-sshd-api-common) v2.15.0-161.vb_200831a_c15b_
 	Mina SSHD API :: Core (mina-sshd-api-core) v2.15.0-161.vb_200831a_c15b_
 	OkHttp Plugin (okhttp-api) v4.11.0-189.v976fa_d3379d6
-	PAM Authentication plugin (pam-auth) v1.12
 	Pipeline: Build Step (pipeline-build-step) v567.vea_ce550ece97
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v65.v203688e7727e
-	Pipeline Graph Analysis Plugin (pipeline-graph-analysis) v237.v2b_75640ca_888
-	Pipeline Graph View Plugin (pipeline-graph-view) v535.vce4e847c35f7
+	Pipeline Graph View Plugin (pipeline-graph-view) v573.v7fc7fb_cfd029
 	Pipeline: Groovy Libraries (pipeline-groovy-lib) v752.vdddedf804e72
-	Pipeline: Input Step (pipeline-input-step) v517.vf8e782ee645c
+	Pipeline: Input Step (pipeline-input-step) v527.vd61b_1d3c5078
 	Pipeline: Milestone Step (pipeline-milestone-step) v138.v78ca_76831a_43
 	Pipeline: Model API (pipeline-model-api) v2.2255.v56a_15e805f12
 	Pipeline: Declarative (pipeline-model-definition) v2.2255.v56a_15e805f12
@@ -71,7 +69,7 @@ Plugins :
 	SnakeYAML API Plugin (snakeyaml-api) v2.3-125.v4d77857a_b_402
 	SSH Credentials Plugin (ssh-credentials) v355.v9b_e5b_cde5003
 	SSH Build Agents plugin (ssh-slaves) v3.1031.v72c6b_883b_869
-	Structs Plugin (structs) v343.vdcf37b_a_c81d5
+	Structs Plugin (structs) v350.v3b_30f09f2363
 	Theme Manager (theme-manager) v294.vf2c2fd783821
 	Timestamper (timestamper) v1.29
 	Token Macro Plugin (token-macro) v444.v52de7e9c573d
@@ -82,7 +80,7 @@ Plugins :
 	Pipeline: Basic Steps (workflow-basic-steps) v1079.vce64b_a_929c5a_
 	Pipeline: Groovy (workflow-cps) v4106.v7a_8a_8176d450
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1405.v1fcd4a_d00096
-	Pipeline: Job (workflow-job) v1520.v56d65e3b_4566
+	Pipeline: Job (workflow-job) v1532.va_9a_d244074a_3
 	Pipeline: Multibranch (workflow-multibranch) v806.vb_b_688f609ee9
 	Pipeline: SCM Step (workflow-scm-step) v437.v05a_f66b_e5ef8
 	Pipeline: Step API (workflow-step-api) v700.v6e45cb_a_5a_a_21
