@@ -7,7 +7,7 @@ on:
     inputs:
       jenkins-versions:
         required: true
-        description: "jenkins versions to test (default: \"lts last-good-version 2.319.3 2.263.4 2.190.1 2.89.4\")"
+        description: "jenkins versions to test (default: \"lts last-good-version 2.479.3 2.319.3 2.190.1 2.89.4\")"
   schedule:
     - cron:  '0 19 * * 2'
 
@@ -21,7 +21,7 @@ jobs:
         id: gen-matrix
         run: |
           # default ; test on a few LTS versions from https://www.jenkins.io/changelog-stable/
-          default_versions="lts last-good-version 2.479.3 2.319.3 2.263.4 2.190.1 2.89.4"
+          default_versions="lts last-good-version 2.479.3 2.319.3 2.190.1 2.89.4"
           matrix_versions="${{ inputs.jenkins-versions }}"
           matrix_versions="${matrix_versions:-${default_versions}}"
           versions_json=$(for ver in ${matrix_versions}; do echo "{'version':'${ver}'},"; done)
