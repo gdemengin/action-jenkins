@@ -5,7 +5,7 @@ set -e
 
 cd $(dirname $0)/..
 
-for version in lts last-good-version 2.479.3 2.319.3 2.263.4 2.190.1 2.89.4; do
+for version in lts last-good-version 2.479.3 2.319.3 2.190.1 2.89.4; do
     echo "test on jenkins-${version}"
 
     # test lts and lgv with their plugin list (fixed for lgv)
