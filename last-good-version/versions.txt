@@ -1,10 +1,10 @@
-Jenkins Instance Version : 2.516.1
+Jenkins Instance Version : 2.516.2
 Plugins : 
 	Ant Plugin (ant) v518.v8d8dc7945eca_
 	OWASP Markup Formatter Plugin (antisamy-markup-formatter) v173.v680e3a_b_69ff3
 	Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api) v4.5.14-269.vfa_2321039a_83
 	ASM API Plugin (asm-api) v9.8-163.vb_2a_96d3f9c3c
-	Bootstrap 5 API Plugin (bootstrap5-api) v5.3.7-2
+	Bootstrap 5 API Plugin (bootstrap5-api) v5.3.7-860.v1251c115c90c
 	bouncycastle API Plugin (bouncycastle-api) v2.30.1.81-264.v95c79c0e772c
 	Branch API Plugin (branch-api) v2.1244.vf95c81f1641c
 	Build Timeout (build-timeout) v1.38
@@ -18,12 +18,12 @@ Plugins :
 	Dark Theme (dark-theme) v574.va_19f05d54df5
 	Display URL API (display-url-api) v2.217.va_6b_de84cc74b_
 	Durable Task Plugin (durable-task) v595.ve87b_f1318d67
-	ECharts API Plugin (echarts-api) v6.0.0-1
+	ECharts API Plugin (echarts-api) v6.0.0-1146.v5c8f3b_8f0573
 	EDDSA API Plugin (eddsa-api) v0.3.0.1-19.vc432d923e5ee
 	Email Extension Plugin (email-ext) v1925.v1598902b_58dd
-	Font Awesome API Plugin (font-awesome-api) v7.0.0-1
+	Font Awesome API Plugin (font-awesome-api) v7.0.0-851.vd1feb_218a_a_63
 	Git plugin (git) v5.7.0
-	Git client plugin (git-client) v6.3.0
+	Git client plugin (git-client) v6.3.2
 	GitHub plugin (github) v1.44.0
 	GitHub API Plugin (github-api) v1.321-488.v9b_c0da_9533f8
 	GitHub Branch Source Plugin (github-branch-source) v1834.v857721ea_74c6
@@ -33,27 +33,27 @@ Plugins :
 	Ionicons API (ionicons-api) v94.vcc3065403257
 	Jackson 2 API Plugin (jackson2-api) v2.19.2-408.v18248a_324cfe
 	Jakarta Activation API (jakarta-activation-api) v2.1.3-2
-	Jakarta Mail API (jakarta-mail-api) v2.1.3-2
+	Jakarta Mail API (jakarta-mail-api) v2.1.3-3
 	JavaBeans Activation Framework (JAF) API (javax-activation-api) v1.2.0-8
 	JAXB plugin (jaxb) v2.3.9-133.vb_ec76a_73f706
 	Java JSON Web Token (JJWT) Plugin (jjwt-api) v0.11.5-120.v0268cf544b_89
 	Joda Time API Plugin (joda-time-api) v2.14.0-149.v1c3ce991d1b_9
-	JQuery3 API Plugin (jquery3-api) v3.7.1-583.vda_6ca_102270d
+	JQuery3 API Plugin (jquery3-api) v3.7.1-594.vb_3864f326cf0
 	JSON Api Plugin (json-api) v20250517-163.v1c5da_e99c775
 	JSON Path API Plugin (json-path-api) v2.9.0-178.vca_b_c71881321
-	jsoup API Plugin (jsoup) v1.21.1-58.vfc578e6e2610
+	jsoup API Plugin (jsoup) v1.21.2-66.v6ea_38164b_8a_2
 	JUnit Plugin (junit) v1335.v6b_a_a_e18534e1
 	LDAP Plugin (ldap) v780.vcb_33c9a_e4332
-	Mailer Plugin (mailer) v515.vd788654779b_1
-	Matrix Authorization Strategy Plugin (matrix-auth) v3.2.7
+	Mailer Plugin (mailer) v522.va_995fa_cfb_8b_d
+	Matrix Authorization Strategy Plugin (matrix-auth) v3.2.8
 	Matrix Project Plugin (matrix-project) v856.v4c352b_3a_b_23e
-	Metrics Plugin (metrics) v4.2.32-481.v75f035fdc894
+	Metrics Plugin (metrics) v4.2.33-484.v2fcd689980d1
 	Mina SSHD API :: Common (mina-sshd-api-common) v2.15.0-161.vb_200831a_c15b_
 	Mina SSHD API :: Core (mina-sshd-api-core) v2.15.0-161.vb_200831a_c15b_
 	OkHttp Plugin (okhttp-api) v4.11.0-189.v976fa_d3379d6
 	Pipeline: Build Step (pipeline-build-step) v571.v08a_fffd4b_0ce
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v65.v203688e7727e
-	Pipeline Graph View Plugin (pipeline-graph-view) v619.v92f3fcdc39db_
+	Pipeline Graph View Plugin (pipeline-graph-view) v628.va_6f6a_1d12848
 	Pipeline: Groovy Libraries (pipeline-groovy-lib) v752.vdddedf804e72
 	Pipeline: Input Step (pipeline-input-step) v534.v352f0a_e98918
 	Pipeline: Milestone Step (pipeline-milestone-step) v138.v78ca_76831a_43
@@ -63,7 +63,7 @@ Plugins :
 	Pipeline: Stage Step (pipeline-stage-step) v322.vecffa_99f371c
 	Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata) v2.2265.v140e610fe9d5
 	Plain Credentials Plugin (plain-credentials) v199.v9f8e1f741799
-	Plugin Utilities API Plugin (plugin-util-api) v6.1.0
+	Plugin Utilities API Plugin (plugin-util-api) v6.1167.v022176c7e0ca_
 	Resource Disposer Plugin (resource-disposer) v0.25
 	SCM API Plugin (scm-api) v707.v749f968369d4
 	Script Security Plugin (script-security) v1378.vf25626395f49
