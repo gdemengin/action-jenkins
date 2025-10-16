@@ -10,6 +10,11 @@ RUN \
         sed -i 's|security.debian.org|archive.debian.org/debian-security/|g' /etc/apt/sources.list; \
         sed -i '/stretch\/updates/d' /etc/apt/sources.list; \
         sed -i '/stretch-updates/d' /etc/apt/sources.list; \
+    elif [ $(cat /etc/apt/sources.list | grep buster-updates | wc -l) != 0 ]; then \
+        sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list; \
+        sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list; \
+        sed -i '/stretch\/updates/d' /etc/apt/sources.list; \
+        sed -i '/stretch-updates/d' /etc/apt/sources.list; \
     fi
 
 # install prerequisite debian packages
@@ -19,7 +24,6 @@ RUN apt-get update \
      ca-certificates \
      curl \
      gnupg2 \
-     software-properties-common \
      vim \
      wget \
      procps \
