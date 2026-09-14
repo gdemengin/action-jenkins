@@ -26,7 +26,7 @@ jobs:
           matrix_versions="${matrix_versions:-${default_versions}}"
           versions_json=$(for ver in ${matrix_versions}; do echo "{'version':'${ver}'},"; done)
           versions_json=$(echo "${versions_json%?}" | tr '\n' ' ')
-          echo "::set-output name=matrix_json::{'include':[${versions_json%?}]}"
+          echo "matrix_json={'include':[${versions_json%?}]}" >> $GITHUB_OUTPUT
 
   jenkins-versions:
     needs: gen-matrix
