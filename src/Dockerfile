@@ -6,15 +6,18 @@ USER root
 # https://stackoverflow.com/questions/76094428/debian-stretch-repositories-404-not-found
 RUN \
     if [ $(cat /etc/apt/sources.list | grep stretch-updates | wc -l) != 0 ]; then \
-        sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list; \
-        sed -i 's|security.debian.org|archive.debian.org/debian-security/|g' /etc/apt/sources.list; \
+        sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list; \
+        sed -i 's|security.debian.org|archive.debian.org/debian-security|g' /etc/apt/sources.list; \
         sed -i '/stretch\/updates/d' /etc/apt/sources.list; \
         sed -i '/stretch-updates/d' /etc/apt/sources.list; \
     elif [ $(cat /etc/apt/sources.list | grep buster-updates | wc -l) != 0 ]; then \
-        sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list; \
-        sed -i 's|security.debian.org|archive.debian.org/|g' /etc/apt/sources.list; \
-        sed -i '/stretch\/updates/d' /etc/apt/sources.list; \
-        sed -i '/stretch-updates/d' /etc/apt/sources.list; \
+        sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list; \
+        sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list; \
+    elif [ $(cat /etc/apt/sources.list | grep bullseye-updates | wc -l) != 0 ]; then \
+        sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list; \
+        sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list; \
+        sed -i '/bullseye-updates/d' /etc/apt/sources.list; \
+        sed -i '/bullseye-security/d' /etc/apt/sources.list; \
     fi
 
 # install prerequisite debian packages
