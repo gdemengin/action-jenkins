@@ -27,7 +27,7 @@ Plugins :
 	GitHub plugin (github) v1.47.0
 	GitHub API Plugin (github-api) v1.330-492.v3941a_032db_2a_
 	GitHub Branch Source Plugin (github-branch-source) v1983.vfa_27ed961853
-	Gradle Plugin (gradle) v2.19.1252.v15196b_5a_6e10
+	Gradle Plugin (gradle) v2.20.1253.vc116f0763a_eb_
 	Gson API Plugin (gson-api) v2.14.0-201.v8eefe5515533
 	Instance Identity (instance-identity) v203.v15e81a_1b_7a_38
 	Ionicons API (ionicons-api) v94.vcc3065403257
@@ -56,7 +56,7 @@ Plugins :
 	Pipeline: Build Step (pipeline-build-step) v601.v6d4c6d1a_9dc7
 	Pipeline: GitHub Groovy Libraries (pipeline-github-lib) v65.v203688e7727e
 	Pipeline Graph View Plugin (pipeline-graph-view) v1013.v9f83fd83c063
-	Pipeline: Groovy Libraries (pipeline-groovy-lib) v805.va_fc79344957d
+	Pipeline: Groovy Libraries (pipeline-groovy-lib) v806.v408277b_33d1d
 	Pipeline: Input Step (pipeline-input-step) v560.v56198a_642157
 	Pipeline: Milestone Step (pipeline-milestone-step) v152.v6e22b_8cfc66c
 	Pipeline: Model API (pipeline-model-api) v2.2293.v6e7193cec599
@@ -69,7 +69,7 @@ Plugins :
 	Prism API Plugin (prism-api) v1.30.0-741.v034eb_0b_0a_a_fa_
 	Resource Disposer Plugin (resource-disposer) v0.25
 	SCM API Plugin (scm-api) v728.vc30dcf7a_0df5
-	Script Security Plugin (script-security) v1415.v9a_f9b_3a_c253d
+	Script Security Plugin (script-security) v1429.v0810f1b_530f5
 	SnakeYAML API Plugin (snakeyaml-api) v2.5-149.v72471e9c6371
 	SnakeYAML Engine API Plugin (snakeyaml-engine-api) v3.1.1-12.v4320c7d6f89c
 	SSH Credentials Plugin (ssh-credentials) v372.va_250881b_08cd
@@ -84,10 +84,10 @@ Plugins :
 	Pipeline (workflow-aggregator) v608.v67378e9d3db_1
 	Pipeline: API (workflow-api) v1413.v2ff1a_5e720fa_
 	Pipeline: Basic Steps (workflow-basic-steps) v1098.v808b_fd7f8cf4
-	Pipeline: Groovy (workflow-cps) v4380.v6eb_8378b_9647
+	Pipeline: Groovy (workflow-cps) v4383.v04fa_a_3d67b_d9
 	Pipeline: Nodes and Processes (workflow-durable-task-step) v1479.v56e587f413a_7
-	Pipeline: Job (workflow-job) v1600.v6f36ed83529d
-	Pipeline: Multibranch (workflow-multibranch) v841.vec5b_9e1806ec
+	Pipeline: Job (workflow-job) v1602.v2a_70b_80a_2396
+	Pipeline: Multibranch (workflow-multibranch) v842.v3a_b_59b_57b_e6e
 	Pipeline: SCM Step (workflow-scm-step) v487.v41313a_96b_65d
 	Pipeline: Step API (workflow-step-api) v724.v538c2362b_dfb_
 	Pipeline: Supporting APIs (workflow-support) v1015.v785e5a_b_b_8b_22
